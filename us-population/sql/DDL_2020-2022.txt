@@ -1,0 +1,199 @@
+-- These SQL statements were executed with PostgreSQL 15.2
+
+create table public.us_counties_pop_est_2022_raw (
+    SUMLEV text,
+    REGION smallint,
+    DIVISION smallint,
+    STATE text,
+    COUNTY text,
+    STNAME text,
+    CTYNAME text,
+    ESTIMATESBASE2020 integer,
+    POPESTIMATE2020 integer,
+    POPESTIMATE2021 integer,
+    POPESTIMATE2022 integer,
+    NPOPCHG2020 integer,
+    NPOPCHG2021 integer,
+    NPOPCHG2022 integer,
+    BIRTHS2020 integer,
+    BIRTHS2021 integer,
+    BIRTHS2022 integer,
+    DEATHS2020 integer,
+    DEATHS2021 integer,
+    DEATHS2022 integer,
+    NATURALCHG2020 integer,
+    NATURALCHG2021 integer,
+    NATURALCHG2022 integer,
+    INTERNATIONALMIG2020 integer,
+    INTERNATIONALMIG2021 integer,
+    INTERNATIONALMIG2022 integer,
+    DOMESTICMIG2020 integer,
+    DOMESTICMIG2021 integer,
+    DOMESTICMIG2022 integer,
+    NETMIG2020 integer,
+    NETMIG2021 integer,
+    NETMIG2022 integer,
+    RESIDUAL2020 integer,
+    RESIDUAL2021 integer,
+    RESIDUAL2022 integer,
+    GQESTIMATESBASE2020 integer,
+    GQESTIMATES2020 integer,
+    GQESTIMATES2021 integer,
+    GQESTIMATES2022 integer,
+    RBIRTH2021 numeric(15,10),
+    RBIRTH2022 numeric(15,10),
+    RDEATH2021 numeric(15,10),
+    RDEATH2022 numeric(15,10),
+    RNATURALCHG2021 numeric(15,10),
+    RNATURALCHG2022 numeric(15,10),
+    RINTERNATIONALMIG2021 numeric(15,10),
+    RINTERNATIONALMIG2022 numeric(15,10),
+    RDOMESTICMIG2021 numeric(15,10),
+    RDOMESTICMIG2022 numeric(15,10),
+    RNETMIG2021 numeric(15,10),
+    RNETMIG2022 numeric(15,10)
+);
+
+COPY public.us_counties_pop_est_2022_raw
+FROM 'C:\Users\danie\gitprojects\data-sets\us-population\co-est2022-alldata.csv'
+WITH (FORMAT CSV, HEADER);
+
+
+create table public.regions (
+    region smallint primary key
+    , region_name text
+);
+
+insert into public.regions
+values
+    (1, 'Northeast')
+    , (2, 'Midwest')
+    , (3, 'South')
+    , (4, 'West')
+;
+
+
+create table public.divisions (
+    division smallint primary key
+    , division_name text
+);
+
+
+insert into public.divisions
+values
+    (1, 'New England')
+    , (2, 'Middle Atlantic')
+    , (3, 'East North Central')
+    , (4, 'West North Central')
+    , (5, 'South Atlantic')
+    , (6, 'East South Central')
+    , (7, 'West South Central')
+    , (8, 'Montain')
+    , (9, 'Pacific')
+;
+
+create schema usa;
+
+
+create table usa.us_counties_pop_est_2022 (
+    state_fips text
+    , county_fips text
+    , region_name text
+    , division_name text
+    , state_name text
+    , county_name text
+    , estimates_base_2020 integer
+    , pop_estimate_2020 integer
+    , pop_estimate_2021 integer
+    , pop_estimate_2022 integer
+    , births_2020 integer
+    , births_2021 integer
+    , births_2022 integer
+    , deaths_2020 integer
+    , deaths_2021 integer
+    , deaths_2022 integer
+);
+
+
+insert into usa.us_counties_pop_est_2022
+(
+    state_fips
+    , county_fips
+    , region_name
+    , division_name
+    , state_name
+    , county_name
+    , estimates_base_2020
+    , pop_estimate_2020
+    , pop_estimate_2021
+    , pop_estimate_2022
+    , births_2020
+    , births_2021
+    , births_2022
+    , deaths_2020
+    , deaths_2021
+    , deaths_2022
+)
+select
+    raw.state
+    , raw.county
+    , regions.region_name
+    , divisions.division_name
+    , raw.stname
+    , raw.ctyname
+    , raw.estimatesbase2020
+    , raw.popestimate2020
+    , raw.popestimate2021
+    , raw.popestimate2022
+    , raw.births2020
+    , raw.births2021
+    , raw.births2022
+    , raw.deaths2020
+    , raw.deaths2021
+    , raw.deaths2022
+from
+    public.us_counties_pop_est_2022_raw as raw
+    left join public.regions as regions on
+    raw.region = regions.region
+    left join public.divisions as divisions on
+    raw.division = divisions.division
+;
+
+
+-- Data validation: Ensure the qty in target data in usa schema matches the qty in the source or raw data
+-- We can use UNION ALL to display the quantities row-wise
+select 'raw' as source, count(*) as row_count from public.us_counties_pop_est_2022_raw
+union all
+select 'usa' as source, count(*) as row_count from usa.us_counties_pop_est_2022;
+
+
+-- or use CTEs to have the quantities displayed column-wise or side by side
+with raw as (
+    select 'raw' as source, count(*) as qty from public.us_counties_pop_est_2022_raw
+)
+, usa as (
+    select 'usa' as source, count(*) as qty from usa.us_counties_pop_est_2022
+)
+select
+    raw.qty as raw_row_count
+    , usa.qty as usa_row_count
+    , case when raw.qty = usa.qty then 'MATCH' else 'NO MATCH' end as row_count_check
+from
+    raw,
+    usa
+;
+
+with raw as (
+    select state || '-' || county as raw_state_county from public.us_counties_pop_est_2022_raw
+)
+, usa as (
+    select state_fips || '-' || county_fips as usa_state_county from usa.us_counties_pop_est_2022
+)
+select
+    raw.raw_state_county
+    , usa.usa_state_county
+from
+    raw inner join usa on raw.raw_state_county = usa.usa_state_county
+order by
+    raw.raw_state_county
+;
