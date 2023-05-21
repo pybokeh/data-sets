@@ -168,3 +168,37 @@ create table public.us_counties_pop_est_2010_2019_raw (
 COPY public.us_counties_pop_est_2010_2019_raw
 FROM 'C:\Users\danie\gitprojects\data-sets\us-population\co-est2019-alldata.csv'
 WITH (FORMAT CSV, header, encoding 'LATIN1');
+
+
+create table public.regions (
+    region smallint primary key
+    , region_name text
+);
+
+insert into public.regions
+values
+    (1, 'Northeast')
+    , (2, 'Midwest')
+    , (3, 'South')
+    , (4, 'West')
+;
+
+
+create table public.divisions (
+    division smallint primary key
+    , division_name text
+);
+
+
+insert into public.divisions
+values
+    (1, 'New England')
+    , (2, 'Middle Atlantic')
+    , (3, 'East North Central')
+    , (4, 'West North Central')
+    , (5, 'South Atlantic')
+    , (6, 'East South Central')
+    , (7, 'West South Central')
+    , (8, 'Montain')
+    , (9, 'Pacific')
+;
