@@ -1,0 +1,35 @@
+# Pull latest official postgres image
+sudo docker pull postgres
+
+# Create local postgres data folder to be used by your Postgres container
+mkdir ~/postgres-data
+
+sudo docker run --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -v ~/postgres-data:/var/lib/postgresql/data -p 5432:5432 -d postgres
+
+# Generate list of running and not running docker containers
+sudo docker ps -a
+
+# Connect with psql SQL client
+psql -h localhost -U postgres -d postgres
+
+# View list of built images
+sudo docker images
+
+# Remove an image
+sudo docker image rm <containerid_or_name>
+
+# Start a docker container
+sudo docker start <containerid_or_name>
+
+# Stop a docker container
+sudo docker stop <containerid_or_name>
+
+
+# sh or start bash terminal inside the running docker container
+# so that you can take a peek into folders, generate list
+# of environment variables, etc
+# You will need to do this to wget/curl the csv files and then issue COPY commands
+# since this container is isolated from your local machine
+sudo docker exec -it <containerid_or_name> sh
+or 
+sudo docker exec -it <containerid_or_name> /bin/bash
