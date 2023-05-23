@@ -1,3 +1,3 @@
-set PGDATA=%USERPROFILE%\apps\PostgreSQL15\data
-"%~dp0\bin\pg_ctl" stop -D "%PGDATA%"
+REM Shutting down the PostgreSQL server...
+"%~dp0\bin\pg_ctl" stop -D "%~dp0\data"
 pause

@@ -9,21 +9,30 @@ Download zip archive: https://www.enterprisedb.com/download-postgresql-binaries
 3) Then issue the following command while in bin folder: initdb -U postgres -W -E UTF8 -D %USERPROFILE%\apps\PostgreSQL15\data --auth=trust
 
 4) Create "start_postgres.bat" file with the following contents:
-@echo off
-REM Run the 3rd line below just once and only once!
-REM initdb -U postgres -W -E UTF8 -D %USERPROFILE%\apps\PostgreSQL15\data --auth=trust
-set PGDATA=%USERPROFILE%\apps\PostgreSQL15\data
-set PGPORT=5432
+@ECHO ON
+@SET PATH="%~dp0\bin";%PATH%
+@SET PGDATA=%~dp0\data
+@SET PGDATABASE=postgres
+@SET PGUSER=postgres
+@SET PGPORT=5439
+@SET PGLOCALEDIR=%~dp0\share\locale
+initdb -U postgres -W -E UTF8 -D "%PGDATA%" --auth=trust
 "%~dp0\bin\pg_ctl" -D "%PGDATA%" -o "-p %PGPORT%" -l logfile start
 pause
-Then save it in the root PostgreSQL installation folder
+
+Then save "start_postgres.bat" in the root PostgreSQL installation folder.  Run this batch file once, the exit out of it.
+Then comment out the line containing the initdb command by placing REM in front of it.  We run the initdb once and only once!
+NOTE: This sets up your PostgreSQL server to be accessible from only your local machine.  To configure your PostgreSQL server
+otherwise, is beyond the scope of this batch file.
 
 5) Create "stop_postgres.bat" file with the following contents:
-set PGDATA=%USERPROFILE%\apps\PostgreSQL15\data
-"%~dp0\bin\pg_ctl" stop -D "%PGDATA%"
+@ECHO ON
+REM Shutting down the PostgreSQL server...
+"%~dp0\bin\pg_ctl" stop -D "%~dp0\data"
 pause
-Then save it in the root PostgreSQL installation folder
+
+Then save "stop_postgres.bat" in the root PostgreSQL installation folder.  This will properly shut down your PostgreSQL server.
 
 
 
-This is an older article: https://www.postgresonline.com/journal/index.php?/archives/172-Starting-PostgreSQL-in-windows-without-install.html
+These instructions were inspired by this old article: https://www.postgresonline.com/journal/index.php?/archives/172-Starting-PostgreSQL-in-windows-without-install.html
