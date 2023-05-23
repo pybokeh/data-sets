@@ -6,9 +6,7 @@ Download zip archive: https://www.enterprisedb.com/download-postgresql-binaries
 
 2) Create "data" folder in your root PostgreSQL installation folder
 
-3) Then issue the following command while in bin folder: initdb -U postgres -W -E UTF8 -D %USERPROFILE%\apps\PostgreSQL15\data --auth=trust
-
-4) Create "start_postgres.bat" file with the following contents:
+3) Create "start_postgres.bat" file with the following contents:
 @ECHO ON
 @SET PATH="%~dp0\bin";%PATH%
 @SET PGDATA=%~dp0\data
@@ -20,8 +18,11 @@ initdb -U postgres -W -E UTF8 -D "%PGDATA%" --auth=trust
 "%~dp0\bin\pg_ctl" -D "%PGDATA%" -o "-p %PGPORT%" -l logfile start
 pause
 
-Then save "start_postgres.bat" in the root PostgreSQL installation folder.  Run this batch file once, the exit out of it.
-Then comment out the line containing the initdb command by placing REM in front of it.  We run the initdb once and only once!
+Then save "start_postgres.bat" in the root PostgreSQL installation folder.  Run this .bat/batch file once, then exit out of it.
+Then edit "start_postgres.bat" by placing REM at the start of the line containing the initdb command - this prevents initdb from executing again.
+Then from now on, run this batch file to start your PostgreSQL server without executing initdb.  You can add it to your Windows "Start Up" or run
+it manually.  To add this batch file to Startup, see this article: https://www.computerhope.com/issues/ch000322.htm
+
 NOTE: This sets up your PostgreSQL server to be accessible from only your local machine.  To configure your PostgreSQL server
 otherwise, is beyond the scope of this batch file.
 

@@ -1,3 +1,4 @@
+REM You want to remove "REM" in the line containing the initdb command.  Run this .bat file once.  Then add REM back, then run the .bat file again.
 @ECHO ON
 @SET PATH="%~dp0\bin";%PATH%
 @SET PGDATA=%~dp0\data
