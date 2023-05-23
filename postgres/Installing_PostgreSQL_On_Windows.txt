@@ -1,0 +1,29 @@
+Installing Postgres on Windows with Zip Archive (when you don't have admin rights to your machine)
+
+Download zip archive: https://www.enterprisedb.com/download-postgresql-binaries
+
+1) Extract zip
+
+2) Create "data" folder in your root PostgreSQL installation folder
+
+3) Then issue the following command while in bin folder: initdb -U postgres -W -E UTF8 -D %USERPROFILE%\apps\PostgreSQL15\data --auth=trust
+
+4) Create "start_postgres.bat" file with the following contents:
+@echo off
+REM Run the 3rd line below just once and only once!
+REM initdb -U postgres -W -E UTF8 -D %USERPROFILE%\apps\PostgreSQL15\data --auth=trust
+set PGDATA=%USERPROFILE%\apps\PostgreSQL15\data
+set PGPORT=5432
+"%~dp0\bin\pg_ctl" -D "%PGDATA%" -o "-p %PGPORT%" -l logfile start
+pause
+Then save it in the root PostgreSQL installation folder
+
+5) Create "stop_postgres.bat" file with the following contents:
+set PGDATA=%USERPROFILE%\apps\PostgreSQL15\data
+"%~dp0\bin\pg_ctl"e stop -D "%PGDATA%"
+pause
+Then save it in the root PostgreSQL installation folder
+
+
+
+This is an older article: https://www.postgresonline.com/journal/index.php?/archives/172-Starting-PostgreSQL-in-windows-without-install.html
