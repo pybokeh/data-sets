@@ -20,7 +20,7 @@ Then save it in the root PostgreSQL installation folder
 
 5) Create "stop_postgres.bat" file with the following contents:
 set PGDATA=%USERPROFILE%\apps\PostgreSQL15\data
-"%~dp0\bin\pg_ctl"e stop -D "%PGDATA%"
+"%~dp0\bin\pg_ctl" stop -D "%PGDATA%"
 pause
 Then save it in the root PostgreSQL installation folder
 
