@@ -1,0 +1,226 @@
+create table public.us_counties_pop_est_2010_2020_raw (
+    SUMLEV text,
+    REGION smallint,
+    DIVISION smallint,
+    STATE text,
+    COUNTY text,
+    STNAME text,
+    CTYNAME text,
+    CENSUS2010POP integer,
+    ESTIMATESBASE2010 integer,
+    POPESTIMATE2010 integer,
+    POPESTIMATE2011 integer,
+    POPESTIMATE2012 integer,
+    POPESTIMATE2013 integer,
+    POPESTIMATE2014 integer,
+    POPESTIMATE2015 integer,
+    POPESTIMATE2016 integer,
+    POPESTIMATE2017 integer,
+    POPESTIMATE2018 integer,
+    POPESTIMATE2019 integer,
+    POPESTIMATE2020 integer,
+    NPOPCHG_2010 integer,
+    NPOPCHG_2011 integer,
+    NPOPCHG_2012 integer,
+    NPOPCHG_2013 integer,
+    NPOPCHG_2014 integer,
+    NPOPCHG_2015 integer,
+    NPOPCHG_2016 integer,
+    NPOPCHG_2017 integer,
+    NPOPCHG_2018 integer,
+    NPOPCHG_2019 integer,
+    NPOPCHG_2020 integer,
+    BIRTHS2010 integer,
+    BIRTHS2011 integer,
+    BIRTHS2012 integer,
+    BIRTHS2013 integer,
+    BIRTHS2014 integer,
+    BIRTHS2015 integer,
+    BIRTHS2016 integer,
+    BIRTHS2017 integer,
+    BIRTHS2018 integer,
+    BIRTHS2019 integer,
+    BIRTHS2020 integer,
+    DEATHS2010 integer,
+    DEATHS2011 integer,
+    DEATHS2012 integer,
+    DEATHS2013 integer,
+    DEATHS2014 integer,
+    DEATHS2015 integer,
+    DEATHS2016 integer,
+    DEATHS2017 integer,
+    DEATHS2018 integer,
+    DEATHS2019 integer,
+    DEATHS2020 integer,
+    NATURALINC2010 integer,
+    NATURALINC2011 integer,
+    NATURALINC2012 integer,
+    NATURALINC2013 integer,
+    NATURALINC2014 integer,
+    NATURALINC2015 integer,
+    NATURALINC2016 integer,
+    NATURALINC2017 integer,
+    NATURALINC2018 integer,
+    NATURALINC2019 integer,
+    NATURALINC2020 integer,
+    INTERNATIONALMIG2010 integer,
+    INTERNATIONALMIG2011 integer,
+    INTERNATIONALMIG2012 integer,
+    INTERNATIONALMIG2013 integer,
+    INTERNATIONALMIG2014 integer,
+    INTERNATIONALMIG2015 integer,
+    INTERNATIONALMIG2016 integer,
+    INTERNATIONALMIG2017 integer,
+    INTERNATIONALMIG2018 integer,
+    INTERNATIONALMIG2019 integer,
+    INTERNATIONALMIG2020 integer,
+    DOMESTICMIG2010 integer,
+    DOMESTICMIG2011 integer,
+    DOMESTICMIG2012 integer,
+    DOMESTICMIG2013 integer,
+    DOMESTICMIG2014 integer,
+    DOMESTICMIG2015 integer,
+    DOMESTICMIG2016 integer,
+    DOMESTICMIG2017 integer,
+    DOMESTICMIG2018 integer,
+    DOMESTICMIG2019 integer,
+    DOMESTICMIG2020 integer,
+    NETMIG2010 integer,
+    NETMIG2011 integer,
+    NETMIG2012 integer,
+    NETMIG2013 integer,
+    NETMIG2014 integer,
+    NETMIG2015 integer,
+    NETMIG2016 integer,
+    NETMIG2017 integer,
+    NETMIG2018 integer,
+    NETMIG2019 integer,
+    NETMIG2020 integer,
+    RESIDUAL2010 integer,
+    RESIDUAL2011 integer,
+    RESIDUAL2012 integer,
+    RESIDUAL2013 integer,
+    RESIDUAL2014 integer,
+    RESIDUAL2015 integer,
+    RESIDUAL2016 integer,
+    RESIDUAL2017 integer,
+    RESIDUAL2018 integer,
+    RESIDUAL2019 integer,
+    RESIDUAL2020 integer,
+    GQESTIMATESBASE2010 integer,
+    GQESTIMATES2010 integer,
+    GQESTIMATES2011 integer,
+    GQESTIMATES2012 integer,
+    GQESTIMATES2013 integer,
+    GQESTIMATES2014 integer,
+    GQESTIMATES2015 integer,
+    GQESTIMATES2016 integer,
+    GQESTIMATES2017 integer,
+    GQESTIMATES2018 integer,
+    GQESTIMATES2019 integer,
+    GQESTIMATES2020 integer,
+    RBIRTH2011 numeric(15,10),
+    RBIRTH2012 numeric(15,10),
+    RBIRTH2013 numeric(15,10),
+    RBIRTH2014 numeric(15,10),
+    RBIRTH2015 numeric(15,10),
+    RBIRTH2016 numeric(15,10),
+    RBIRTH2017 numeric(15,10),
+    RBIRTH2018 numeric(15,10),
+    RBIRTH2019 numeric(15,10),
+    RBIRTH2020 numeric(15,10),
+    RDEATH2011 numeric(15,10),
+    RDEATH2012 numeric(15,10),
+    RDEATH2013 numeric(15,10),
+    RDEATH2014 numeric(15,10),
+    RDEATH2015 numeric(15,10),
+    RDEATH2016 numeric(15,10),
+    RDEATH2017 numeric(15,10),
+    RDEATH2018 numeric(15,10),
+    RDEATH2019 numeric(15,10),
+    RDEATH2020 numeric(15,10),
+    RNATURALINC2011 numeric(15,10),
+    RNATURALINC2012 numeric(15,10),
+    RNATURALINC2013 numeric(15,10),
+    RNATURALINC2014 numeric(15,10),
+    RNATURALINC2015 numeric(15,10),
+    RNATURALINC2016 numeric(15,10),
+    RNATURALINC2017 numeric(15,10),
+    RNATURALINC2018 numeric(15,10),
+    RNATURALINC2019 numeric(15,10),
+    RNATURALINC2020 numeric(15,10),
+    RINTERNATIONALMIG2011 numeric(15,10),
+    RINTERNATIONALMIG2012 numeric(15,10),
+    RINTERNATIONALMIG2013 numeric(15,10),
+    RINTERNATIONALMIG2014 numeric(15,10),
+    RINTERNATIONALMIG2015 numeric(15,10),
+    RINTERNATIONALMIG2016 numeric(15,10),
+    RINTERNATIONALMIG2017 numeric(15,10),
+    RINTERNATIONALMIG2018 numeric(15,10),
+    RINTERNATIONALMIG2019 numeric(15,10),
+    RINTERNATIONALMIG2020 numeric(15,10),
+    RDOMESTICMIG2011 numeric(15,10),
+    RDOMESTICMIG2012 numeric(15,10),
+    RDOMESTICMIG2013 numeric(15,10),
+    RDOMESTICMIG2014 numeric(15,10),
+    RDOMESTICMIG2015 numeric(15,10),
+    RDOMESTICMIG2016 numeric(15,10),
+    RDOMESTICMIG2017 numeric(15,10),
+    RDOMESTICMIG2018 numeric(15,10),
+    RDOMESTICMIG2019 numeric(15,10),
+    RDOMESTICMIG2020 numeric(15,10),
+    RNETMIG2011 numeric(15,10),
+    RNETMIG2012 numeric(15,10),
+    RNETMIG2013 numeric(15,10),
+    RNETMIG2014 numeric(15,10),
+    RNETMIG2015 numeric(15,10),
+    RNETMIG2016 numeric(15,10),
+    RNETMIG2017 numeric(15,10),
+    RNETMIG2018 numeric(15,10),
+    RNETMIG2019 numeric(15,10),
+    RNETMIG2020 numeric(15,10)
+);
+
+COPY public.us_counties_pop_est_2010_2020_raw
+FROM 'C:\Users\danie\gitprojects\data-sets\us-population\co-est2020-alldata.csv'
+WITH (FORMAT CSV, header, encoding 'LATIN1');
+
+
+create table public.regions (
+    region smallint primary key
+    , region_name text
+);
+
+insert into public.regions
+values
+    (1, 'Northeast')
+    , (2, 'Midwest')
+    , (3, 'South')
+    , (4, 'West')
+;
+
+
+create table public.divisions (
+    division smallint primary key
+    , division_name text
+);
+
+
+insert into public.divisions
+values
+    (1, 'New England')
+    , (2, 'Middle Atlantic')
+    , (3, 'East North Central')
+    , (4, 'West North Central')
+    , (5, 'South Atlantic')
+    , (6, 'East South Central')
+    , (7, 'West South Central')
+    , (8, 'Montain')
+    , (9, 'Pacific')
+;
+
+
+CREATE TABLE public.us_states (
+    state_name VARCHAR(255),
+    state_code VARCHAR(2)
+);
