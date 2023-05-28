@@ -5,7 +5,7 @@ https://docs.getdbt.com/docs/quickstarts/dbt-core/manual-install
 3) Create .dbt folder in user's home directory.  Example: mkdir ~/.dbt (non-Windows) or mkdir %USERPROFILE%\.dbt (Windows)
 4) Create dbt project
     - dbt init <project_name>
-5) Update db_project_yml file
+5) Update db_project.yml file
 6) Create profiles.yml file typically they recommend ~/.dbt folder
 
 In profiles.yml file, for example, postgres profile, it would look something like:
