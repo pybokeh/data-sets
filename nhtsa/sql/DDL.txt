@@ -1,0 +1,326 @@
+create schema nhtsa;
+
+CREATE TABLE nhtsa.vpic_decode (
+    state integer,
+    statename varchar,
+    st_case integer,
+    veh_no integer,
+    vehicledescriptor varchar,
+    vindecodedon timestamp NULL,
+    vindecodeerror varchar,
+    vehicletypeid integer,
+    vehicletype varchar,
+    manufacturerfullnameid integer,
+    manufacturerfullname varchar,
+    makeid integer,
+    make varchar,
+    modelid integer,
+    model varchar,
+    modelyear integer,
+    series varchar,
+    trim varchar,
+    series2 varchar,
+    trim2 varchar,
+    plantcountryid numeric(50,5),
+    plantcountry varchar,
+    plantstate varchar,
+    plantcity varchar,
+    plantcompanyname varchar,
+    destinationmarketid numeric(50,5),
+    destinationmarket varchar,
+    baseprice numeric(50,5),
+    note varchar,
+    bodyclassid integer,
+    bodyclass varchar,
+    doorscount numeric(50,5),
+    windows numeric(50,5),
+    wheelbasetypeid numeric(50,5),
+    wheelbasetype varchar,
+    trackwidthin numeric(50,5),
+    grossvehicleweightratingfromid numeric(50,5),
+    grossvehicleweightratingfrom varchar,
+    grossvehicleweightratingtoid numeric(50,5),
+    grossvehicleweightratingto varchar,
+    grosscombweightratingfromid numeric(50,5),
+    grosscombweightratingfrom numeric(50,5),
+    grosscombweightratingtoid numeric(50,5),
+    grosscombweightratingto numeric(50,5),
+    curbweightlb numeric(50,5),
+    wheelbasein_from numeric(50,5),
+    wheelbasein_to numeric(50,5),
+    wheelscount numeric(50,5),
+    wheelsizefrontin numeric(50,5),
+    wheelsizerearin numeric(50,5),
+    truckbodycabtypeid numeric(50,5),
+    truckbodycabtype varchar,
+    truckbedtypeid numeric(50,5),
+    truckbedtype varchar,
+    truckbedlengthin numeric(50,5),
+    bustypeid numeric(50,5),
+    bustype varchar,
+    busfloorconfigurationtypeid numeric(50,5),
+    busfloorconfigurationtype varchar,
+    buslengthft numeric(50,5),
+    otherbusinfo varchar,
+    custommotorcycletypeid numeric(50,5),
+    custommotorcycletype varchar,
+    motorcyclesuspensiontypeid numeric(50,5),
+    motorcyclesuspensiontype varchar,
+    motorcyclechassistypeid numeric(50,5),
+    motorcyclechassistype varchar,
+    othermotorcycleinfo varchar,
+    steeringlocationid numeric(50,5),
+    steeringlocation varchar,
+    entertainmentsystemid numeric(50,5),
+    entertainmentsystem varchar,
+    seatscount numeric(50,5),
+    seatrowscount numeric(50,5),
+    transmissionspeeds numeric(50,5),
+    transmissionstyleid numeric(50,5),
+    transmissionstyle varchar,
+    drivetypeid numeric(50,5),
+    drivetype varchar,
+    axlescount numeric(50,5),
+    axleconfigurationid numeric(50,5),
+    axleconfiguration varchar,
+    brakesystemtypeid numeric(50,5),
+    brakesystemtype varchar,
+    brakesystemdesc varchar,
+    evdriveunitid numeric(50,5),
+    evdriveunit varchar,
+    batterykwh_from numeric(50,5),
+    batterykwh_to numeric(50,5),
+    batteryv_from numeric(50,5),
+    batteryv_to numeric(50,5),
+    batterya_from numeric(50,5),
+    batterya_to numeric(50,5),
+    batterypackspervehicle numeric(50,5),
+    batterymodulesperpack numeric(50,5),
+    batterycellspermodule numeric(50,5),
+    batterytypeid numeric(50,5),
+    batterytype varchar,
+    otherbatteryinfo varchar,
+    chargerlevelid numeric(50,5),
+    chargerlevel varchar,
+    chargerpowerkw numeric(50,5),
+    enginemanufacturer varchar,
+    enginemodel varchar,
+    engineconfigurationid numeric(50,5),
+    engineconfiguration varchar,
+    enginepowerkw numeric(50,5),
+    enginestrokecycles numeric(50,5),
+    enginecylinderscount numeric(50,5),
+    enginebrakehp_from numeric(50,5),
+    enginebrakehp_to numeric(50,5),
+    enginecoolingtypeid numeric(50,5),
+    enginecoolingtype varchar,
+    displacementci numeric(50,5),
+    displacementcc numeric(50,5),
+    displacementl numeric(50,5),
+    fueltypeprimaryid numeric(50,5),
+    fueltypeprimary varchar,
+    fueltypesecondaryid numeric(50,5),
+    fueltypesecondary varchar,
+    fueldeliveryinjectiontypeid numeric(50,5),
+    fueldeliveryinjectiontype varchar,
+    enginevalvetraindesignid numeric(50,5),
+    enginevalvetraindesign varchar,
+    engineelectrificationlevelid numeric(50,5),
+    engineelectrificationlevel varchar,
+    engineturboid numeric(50,5),
+    engineturbo varchar,
+    topspeedmph numeric(50,5),
+    otherengineinfo varchar,
+    seatbelttypeid numeric(50,5),
+    seatbelttype varchar,
+    pretensionerid numeric(50,5),
+    pretensioner varchar,
+    airbaglocfrontid numeric(50,5),
+    airbaglocfront varchar,
+    airbaglockneeid numeric(50,5),
+    airbaglocknee varchar,
+    airbaglocsideid numeric(50,5),
+    airbaglocside varchar,
+    airbagloccurtainid numeric(50,5),
+    airbagloccurtain varchar,
+    airbaglocseatcushionid numeric(50,5),
+    airbaglocseatcushion varchar,
+    otherrestraintsysteminfo varchar,
+    forwardcollisionwarningid numeric(50,5),
+    forwardcollisionwarning varchar,
+    dynamicbrakesupportid numeric(50,5),
+    dynamicbrakesupport varchar,
+    crashimminentbrakingid numeric(50,5),
+    crashimminentbraking varchar,
+    pedestrianautoemergencybrakingid numeric(50,5),
+    pedestrianautoemergencybraking varchar,
+    blindspotwarningid numeric(50,5),
+    blindspotwarning varchar,
+    blindspotinterventionid numeric(50,5),
+    blindspotintervention varchar,
+    lanedeparturewarningid numeric(50,5),
+    lanedeparturewarning varchar,
+    lanekeepingassistanceid numeric(50,5),
+    lanekeepingassistance varchar,
+    lanecenteringassistanceid numeric(50,5),
+    lanecenteringassistance varchar,
+    backupcameraid numeric(50,5),
+    backupcamera varchar,
+    rearcrosstrafficalertid numeric(50,5),
+    rearcrosstrafficalert varchar,
+    rearautomaticemergencybrakingid numeric(50,5),
+    rearautomaticemergencybraking varchar,
+    parkassistid numeric(50,5),
+    parkassist varchar,
+    daytimerunninglightid numeric(50,5),
+    daytimerunninglight varchar,
+    headlamplightsourceid numeric(50,5),
+    headlamplightsource varchar,
+    semiautoheadlampbeamswitchingid numeric(50,5),
+    semiautoheadlampbeamswitching varchar,
+    adaptivedrivingbeamid numeric(50,5),
+    adaptivedrivingbeam varchar,
+    adaptivecruisecontrolid numeric(50,5),
+    adaptivecruisecontrol varchar,
+    antilockbrakesystemid numeric(50,5),
+    antilockbrakesystem varchar,
+    electronicstabilitycontrolid numeric(50,5),
+    electronicstabilitycontrol varchar,
+    tpmsid numeric(50,5),
+    tpms varchar,
+    automaticcrashnotificationid numeric(50,5),
+    automaticcrashnotification varchar,
+    eventdatarecorderid numeric(50,5),
+    eventdatarecorder varchar,
+    tractioncontrolid numeric(50,5),
+    tractioncontrol varchar,
+    autopedestrianalertingsoundid numeric(50,5),
+    autopedestrianalertingsound varchar,
+    keylessignitionid numeric(50,5),
+    keylessignition varchar,
+    saeautomationlevel_from numeric(50,5),
+    saeautomationlevel_to numeric(50,5),
+    autoreversesystemid numeric(50,5),
+    autoreversesystem varchar,
+    activesafetysysnote varchar
+);
+
+
+COPY nhtsa.vpic_decode
+FROM '/var/local/vpicdecode.csv'
+WITH (FORMAT CSV, header, encoding 'LATIN1');
+
+
+
+CREATE TABLE nhtsa.make_id_custom (
+    make_id INTEGER,
+    make_name VARCHAR
+);
+
+
+COPY nhtsa.make_id_custom
+FROM '/var/local/nhtsa_make_id.csv'
+WITH (FORMAT CSV, header);
+
+select distinct vehicletypeid, vehicletype from nhtsa.vpic_decode;
+
+
+select
+    vdecode.make
+    , count(*) as qty
+from
+    nhtsa.vpic_decode vdecode
+    inner join nhtsa.make_id_custom mic
+    on vdecode.makeid = mic.make_id
+where
+    vdecode.vehicletypeid in(2, 7, 3, 5)
+group by
+    make
+order by
+    qty desc
+;
+
+select
+    vehicledescriptor
+    , vehicletype
+    , modelyear
+    , make
+    , model
+    , series 
+    , series2
+    , trim 
+    , enginecylinderscount 
+    , displacementci 
+    , displacementcc 
+    , displacementl 
+    , fueltypeprimary
+    , plantcountry 
+    , plantstate 
+    , plantcity
+    , baseprice
+    , bodyclass 
+    , doorscount 
+    , grossvehicleweightratingfrom
+    , grossvehicleweightratingto
+    , truckbodycabtype
+    , seatscount 
+    , seatrowscount 
+    , transmissionspeeds 
+    , transmissionstyle 
+    , drivetype 
+    , brakesystemtype 
+    , engineconfiguration 
+    , enginepowerkw 
+    , fueltypesecondary 
+    , enginevalvetraindesign
+    , engineelectrificationlevel 
+    , engineturbo
+    , otherengineinfo 
+    , airbaglocknee
+    , airbaglocside
+    , airbagloccurtain
+    , otherrestraintsysteminfo
+    , forwardcollisionwarning 
+    , dynamicbrakesupport 
+    , crashimminentbraking
+    , pedestrianautoemergencybraking
+    , autopedestrianalertingsound
+    , blindspotwarning 
+    , lanedeparturewarning
+    , lanekeepingassistance
+    , lanecenteringassistance 
+    , backupcamera 
+    , rearcrosstrafficalert 
+    , parkassist
+    , daytimerunninglight 
+    , headlamplightsource 
+    , semiautoheadlampbeamswitching 
+    , adaptivedrivingbeam
+    , adaptivecruisecontrol 
+    , antilockbrakesystem 
+    , electronicstabilitycontrol 
+    , tpms 
+    , automaticcrashnotification 
+    , tractioncontrol 
+    , keylessignition 
+    , autoreversesystem
+from
+    nhtsa.vpic_decode vdecode
+    inner join nhtsa.make_id_custom mic
+    on vdecode.makeid = mic.make_id
+where
+    vehicletypeid in(2, 7, 3)
+order by 
+    modelyear desc
+;
+
+
+
+select
+    *
+from
+    nhtsa.vpic_decode vd
+where
+    vehicletypeid in(2, 7, 3)
+    and make = 'FORD'
+;
