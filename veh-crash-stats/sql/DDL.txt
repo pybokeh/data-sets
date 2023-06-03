@@ -1,7 +1,7 @@
--- Since data we have is just for ohio, probably best to organize using state name as schema
-create schema ohio;
+-- Since data we have is just for ohio, probably best to organize using state code as schema
+create schema oh;
 
-CREATE TABLE ohio.veh_crash_stats (
+CREATE TABLE oh.crash_statistics (
     local_report_number varchar,
     document_number varchar,
     crash_severity varchar,
@@ -15,8 +15,8 @@ CREATE TABLE ohio.veh_crash_stats (
     oh_other boolean,
     private_property boolean,
     reporting_agency_ncic varchar,
-    number_of_units smallint,
-    unit_in_error smallint,
+    number_of_units integer,
+    unit_in_error integer,
     county varchar,
     in_city_village_township varchar,
     city_village_township_name varchar,
@@ -39,7 +39,7 @@ CREATE TABLE ohio.veh_crash_stats (
     reference_point_used varchar,
     reference_road_type varchar,
     intersection_or_approach_related boolean,
-    number_of_approaches smallint,
+    number_of_approaches integer,
     within_interchange_area boolean,
     location_first_harmful_event varchar,
     manner_of_collision varchar,
@@ -58,8 +58,8 @@ CREATE TABLE ohio.veh_crash_stats (
     dispatched_date_time timestamptz,
     arrived_date_time timestamptz,
     scene_cleared_date_time timestamptz,
-    other_investigation_time smallint,
-    total_time_roadway_closed smallint,
+    other_investigation_time integer,
+    total_time_roadway_closed integer,
     officer_name varchar,
     officer_badge_number varchar,
     checked_by_officer_name varchar,
@@ -70,9 +70,9 @@ CREATE TABLE ohio.veh_crash_stats (
     road_contour varchar,
     road_condition varchar,
     road_surface varchar,
-    total_injured smallint,
-    total_killed smallint,
-    total_minutes smallint,
+    total_injured integer,
+    total_killed integer,
+    total_minutes integer,
     animal_related boolean,
     animal_deer_related boolean,
     alcohol_related boolean,
@@ -91,3 +91,20 @@ CREATE TABLE ohio.veh_crash_stats (
     commercial_related boolean,
     commercial_at_fault boolean
 );
+
+
+
+-- It was discovered that one or more records have uneven numbered double-quotes
+-- So had to create a "quote" character to create boundary for each field that is most likely not already used in the CSV file:
+COPY oh.crash_statistics
+FROM '/var/local/CrashStatistics.csv'
+WITH (FORMAT CSV, HEADER, QUOTE E'\x01');
+
+
+-- This record's local_information has uneven numbered double-quotes:
+select * from oh.crash_statistics where local_information = 'P23041400001296';
+
+
+
+-- Handy command to examine a specific row of the CSV file:
+-- head -n 13512 CrashStatistics.csv | tail -n 1
