@@ -1,6 +1,7 @@
 -- Since data we have is just for ohio, probably best to organize using state code as schema
 create schema oh;
 
+-- This is the table that we are going to load the "CrashStatistics.csv" file into
 CREATE TABLE oh.crash_statistics (
     local_report_number varchar,
     document_number varchar,
@@ -85,7 +86,7 @@ CREATE TABLE oh.crash_statistics (
     small_truck_related boolean,
     youth_related boolean,
     teen_related boolean,
-    dui21related boolean,
+    dui21_related boolean,
     senior_related boolean,
     fatal_not_reportable boolean,
     commercial_related boolean,
@@ -108,3 +109,171 @@ select * from oh.crash_statistics where local_information = 'P23041400001296';
 
 -- Handy command to examine a specific row of the CSV file:
 -- head -n 13512 CrashStatistics.csv | tail -n 1
+
+
+
+-- This is the table that we are going to load the "UnitStatistics.csv" file into
+CREATE TABLE oh.unit_statistics (
+    local_report_number varchar,
+    document_number varchar,
+    crash_date_time timestamptz,
+    unit_number integer,
+    unit_type varchar,
+    owner_city varchar,
+    owner_state varchar,
+    owner_zip varchar,
+    license_plate_state varchar,
+    number_of_occupants integer,
+    impact_area varchar,
+    damage_scale varchar,
+    damaged_areas varchar,
+    operating_in_autonomous_mode varchar,
+    autonomous_mode_level varchar,
+    vin varchar,
+    vehicle_year integer,
+    vehicle_make varchar,
+    vehicle_model varchar,
+    vehicle_color varchar,
+    interlock_device_equipped boolean,
+    proof_of_insurance_shown boolean,
+    insurance_company varchar,
+    is_towed_flag boolean,
+    towed_by varchar,
+    government_use boolean,
+    commercial_use boolean,
+    carrier_name varchar,
+    carrier_address varchar,
+    carrier_city varchar,
+    carrier_state varchar,
+    carrier_zip varchar,
+    carrier_phone varchar,
+    us_dot varchar,
+    has_hm_placard boolean,
+    hm_placard_number integer,
+    hm_class_number integer,
+    weight varchar,
+    hazardous_material_released boolean,
+    cargo_body_type varchar,
+    hit_skip_unit boolean,
+    number_of_thru_lanes integer,
+    trafficway_flow varchar,
+    non_motorist_location_at_impact varchar,
+    in_emergency_response boolean,
+    trailing_unit_count integer,
+    special_function varchar,
+    action varchar,
+    pre_crash_action varchar,
+    contributing_circumstance varchar,
+    vehicle_defect varchar,
+    first_harmful_event varchar,
+    most_harmful_event varchar,
+    unit_speed integer,
+    speed_detected varchar,
+    posted_speed integer,
+    direction_from varchar,
+    direction_to varchar,
+    traffic_control varchar,
+    rail_grade_crossing varchar
+);
+
+COPY oh.unit_statistics
+FROM '/var/local/UnitStatistics.csv'
+WITH (FORMAT CSV, HEADER, QUOTE E'\x01');
+
+
+-- This is the table that we are going to load the "PersonStatistics.csv" file into
+CREATE TABLE oh.person_statistics (
+    local_report_number varchar,
+    document_number varchar,
+    crash_date_time timestamptz,
+    person_type varchar,
+    unit_number integer,
+    special_function integer,
+    age integer,
+    gender varchar,
+    city varchar,
+    state varchar,
+    zip varchar,
+    injury varchar,
+    injured_taken_by varchar,
+    ems_agency varchar,
+    injured_taken_to varchar,
+    safety_equipment_used varchar,
+    dot_compliant_motorcycle_helmet boolean,
+    seating_position varchar,
+    airbag_usage varchar,
+    ejection_type varchar,
+    trapped varchar,
+    operator_license_state varchar,
+    ol_class varchar,
+    endorsement_one varchar,
+    endorsement_two varchar,
+    restrictions varchar,
+    condition varchar,
+    is_alcohol_suspected boolean,
+    is_marijuana_suspected boolean,
+    is_other_drug_suspected boolean,
+    alcohol_test_status varchar,
+    alcohol_test_type varchar,
+    alcohol_test_value varchar,
+    drug_test_status varchar,
+    drug_test_type varchar,
+    drug_test_results varchar,
+    offense_charged varchar,
+    local_code boolean,
+    offense_description varchar,
+    citation_number varchar,
+    driver_distracted_by varchar,
+    bmv_status_type varchar
+);
+
+COPY oh.person_statistics
+FROM '/var/local/PersonStatistics.csv'
+WITH (FORMAT CSV, HEADER, QUOTE E'\x01');
+
+
+
+
+-- This is the table that we are going to load the "ODOTStatistics.csv" file into
+CREATE TABLE oh.odot_statistics (
+    record_type varchar,
+    local_report_number varchar,
+    document_number varchar,
+    crash_year integer,
+    nlf_id varchar,
+    jurisdiction varchar,
+    district integer,
+    county varchar,
+    route_type varchar,
+    route_number varchar,
+    route_suffix varchar,
+    county_true_log decimal(10,6),
+    latitude decimal(10,6),
+    longitude decimal(10,6),
+    fips_code varchar,
+    intersection_related varchar,
+    crash_type integer,
+    crash_location varchar,
+    functional_class varchar,
+    nhs_code varchar,
+    intersection_id varchar,
+    interchange_id varchar
+);
+
+
+--COPY oh.odot_statistics
+--FROM '/var/local/ODOTStatistics.csv'
+--WITH (FORMAT CSV, HEADER, QUOTE E'\x01');
+
+-- This worked so there wasn't an unenclosed quote character
+COPY oh.odot_statistics
+FROM '/var/local/ODOTStatistics.csv'
+WITH (FORMAT CSV, HEADER);
+
+
+-- crash_statistics and odot_statistics tables use document_number as unique identifier for their records
+ALTER TABLE oh.crash_statistics
+ADD CONSTRAINT pk_crash_stats PRIMARY KEY (document_number);
+
+ALTER TABLE oh.odot_statistics
+ADD CONSTRAINT pk_odot_stats PRIMARY KEY (document_number);
