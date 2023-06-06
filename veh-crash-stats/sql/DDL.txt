@@ -40,7 +40,7 @@ CREATE TABLE oh.crash_statistics (
     reference_point_used varchar,
     reference_road_type varchar,
     intersection_or_approach_related boolean,
-    number_of_approaches integer,
+    number_of_approaches decimal(10,2),
     within_interchange_area boolean,
     location_first_harmful_event varchar,
     manner_of_collision varchar,
@@ -59,8 +59,8 @@ CREATE TABLE oh.crash_statistics (
     dispatched_date_time timestamptz,
     arrived_date_time timestamptz,
     scene_cleared_date_time timestamptz,
-    other_investigation_time integer,
-    total_time_roadway_closed integer,
+    other_investigation_time decimal(10,2),
+    total_time_roadway_closed decimal(10,2),
     officer_name varchar,
     officer_badge_number varchar,
     checked_by_officer_name varchar,
@@ -92,7 +92,6 @@ CREATE TABLE oh.crash_statistics (
     commercial_related boolean,
     commercial_at_fault boolean
 );
-
 
 
 -- It was discovered that one or more records have uneven numbered double-quotes
