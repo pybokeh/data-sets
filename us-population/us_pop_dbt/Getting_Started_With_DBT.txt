@@ -1,36 +1,52 @@
-https://docs.getdbt.com/docs/quickstarts/dbt-core/manual-install
+# Install dbt-core and the necessary libraries for the backend you are using
+pip install dbt-core<br>
+pip install dbt-[your_backend]<br>
+For example: pip install dbt-snowflake or pip install dbt-postgres
 
-1) pip install dbt-core
-2) Install database adapter.  For example: pip install dbt-postgres
-3) Create .dbt folder in user's home directory.  Example: mkdir ~/.dbt (non-Windows) or mkdir %USERPROFILE%\.dbt (Windows)
-4) Create dbt project
-    - dbt init <project_name>
-5) Update db_project.yml file
-6) Create profiles.yml file typically they recommend ~/.dbt folder
+ 
+# Create profiles.yml file
+Create .dbt folder at ~/.dbt, then create profiles.yml file inside this folder
 
-In profiles.yml file, for example, postgres profile, it would look something like:
-https://docs.getdbt.com/reference/warehouse-setups/postgres-setup
-[name that matches the dbt_project.yml]:
-  target: dev
-  outputs:
-    dev:
-      type: postgres
-      host: [hostname]
-      user: [username]
-      password: [password]        NOTE: Enclose in double-quotes
-      port: [port]
-      dbname: [database name] # or database instead of dbname
-      schema: [dbt schema]
-      threads: [optional, 1 or more]
-      keepalives_idle: 0 # default 0, indicating the system default. See below
-      connect_timeout: 10 # default 10 seconds
-      retries: 1  # default 1 retry on error/timeout when opening connections
-      search_path: [optional, override the default postgres search_path]
-      role: [optional, set the role dbt assumes when executing queries]
-      sslmode: [optional, set the sslmode used to connect to the database]
-      sslcert: [optional, set the sslcert to control the certifcate file location]
-      sslkey: [optional, set the sslkey to control the location of the private key]
-      sslrootcert: [optional, set the sslrootcert config value to a new file path in order to customize the file location that contain root certificates]
+Populate profiles.yml file based on the backend technology you are using<br>
+If using Snowflake:<br>
+https://docs.getdbt.com/docs/core/connect-data-platform/snowflake-setup
 
-7) Run: dbt debug    in the same directory that contains dbt_project.yml file
-  
+or visit: https://docs.getdbt.com/docs/core/connect-data-platform/about-core-connections<br>
+for other backends
+
+
+# Check dbt is installed correctly
+Check dbt is installed correctly by issuing the following command: `dbt --version`
+
+ 
+# Create new dbt project
+Navigate to folder location you want to create your new dbt project, then issue the following command: `dbt init`
+  - Enter the project's name
+  - CTRL + C to exit when it prompts you to enter number for backend to use
+
+ 
+After executing the dbt init command, it should have created a new folder with the name that you provided and bunch of
+other folders and files inside this new folder.
+
+ 
+
+# Set up your dbt project to work with your backend
+**VERY IMPORTANT**<br>
+Edit the dbt_project.yml and where it says:<br>
+profile: 'your_profile'<br>
+You change 'your_profile' to match the profile name in your profiles.yml that you created in the earlier step.
+
+ 
+# Check that dbt is set up correctly to work with your backend
+Make sure you are in the same directory that contains the dbt_project.yml file.  If so, then issue the following command:<br>
+
+`dbt debug`
+
+This should perform checks to make sure everything is setup right, that it can connect to your backend.
+If all checks passed, then you are all set!
+
+ 
+# Resources
+Installing dbt-core: https://docs.getdbt.com/docs/core/pip-install<br>
+Youtube video: https://www.youtube.com/watch?v=toSAAgLUHuk<br>
+Populating profiles.yml for you backend: https://docs.getdbt.com/docs/core/connect-data-platform/about-core-connections
