@@ -24,6 +24,9 @@ sudo docker exec -it <containerid_or_name> /bin/bash
 # Once inside the container using exec -it command, connect with psql SQL client with the password you used in the docker run command abobve
 psql -h localhost -U postgres -d postgres
 
+# If having password issues, you can change it with the following command
+ALTER USER postgres WITH PASSWORD 'new_password';
+
 
 # Generate list of running and not running docker containers
 sudo docker ps -a
