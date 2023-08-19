@@ -42,8 +42,16 @@ Make sure you are in the same directory that contains the dbt_project.yml file. 
 
 `dbt debug`
 
-This should perform checks to make sure everything is setup right, that it can connect to your backend.
+This should perform checks to make sure everything is setup right, that it can connect to your backend.<br>
 If all checks passed, then you are all set!
+
+# Install dbt dependencies like dbt-utils
+https://hub.getdbt.com/dbt-labs/dbt_utils/latest/<br>
+Edit your packages.yml file per documentation above, then issue the command below<br>
+`dbt deps`
+
+# Common dbt commands
+dbt run, dbt test, dbt compile
 
  
 # Resources
