@@ -20,9 +20,9 @@ Check dbt is installed correctly by issuing the following command: `dbt --versio
 
  
 # Create new dbt project
-Navigate to folder location you want to create your new dbt project, then issue the following command: `dbt init`
-  - Enter the project's name
-  - CTRL + C to exit when it prompts you to enter number for backend to use
+Navigate to folder location you want to create your new dbt project, then issue the following command:<br>
+dbt init <your_project_name><br>
+You'll be prompted to enter the number that corresponds to the database that you will be working with.  Enter the number.
 
  
 After executing the dbt init command, it should have created a new folder with the name that you provided and bunch of
@@ -30,11 +30,11 @@ other folders and files inside this new folder.
 
  
 
-# Set up your dbt project to work with your backend
-**VERY IMPORTANT**<br>
-Edit the dbt_project.yml and where it says:<br>
-profile: 'your_profile'<br>
-You change 'your_profile' to match the profile name in your profiles.yml that you created in the earlier step.
+# Updating your `profiles.yml` file
+The `dbt init` command that you executed should have created a `profiles.yml` file located at your default `home` directory.<br>
+In Linux OS, it would be located at `~/.dbt/profiles.yml`.  In Windows OS, it would be located at `C:\Users\your_username\.dbt\profiles.yml`.<br>
+You need to update this `profiles.yml` file by entering the database server details and credentials.  You may need to enclose your password with double-quotes<br>
+if you get an authentication error when issuing the `dbt debug` command in the next step below.
 
  
 # Check that dbt is set up correctly to work with your backend
