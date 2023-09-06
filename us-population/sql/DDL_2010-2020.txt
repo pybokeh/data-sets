@@ -3,7 +3,7 @@ create table public.us_counties_pop_est_2010_2020_raw (
     REGION smallint,
     DIVISION smallint,
     STATE text,
-    COUNTY text,
+    COUNTY smallint,
     STNAME text,
     CTYNAME text,
     CENSUS2010POP integer,
@@ -181,8 +181,10 @@ create table public.us_counties_pop_est_2010_2020_raw (
     RNETMIG2020 numeric(15,10)
 );
 
+drop table public.us_counties_pop_est_2010_2020_raw;
+
 COPY public.us_counties_pop_est_2010_2020_raw
-FROM 'C:\Users\danie\gitprojects\data-sets\us-population\co-est2020-alldata.csv'
+FROM '/var/local/co-est2020-alldata.csv'
 WITH (FORMAT CSV, header, encoding 'LATIN1');
 
 
@@ -224,3 +226,44 @@ CREATE TABLE public.us_states (
     state_name VARCHAR(255),
     state_code VARCHAR(2)
 );
+
+COPY public.us_states
+FROM '/var/local/state_name_code.csv'
+WITH (FORMAT CSV, header);
+
+select 
+	stname 
+	, popestimate2010
+	, popestimate2020
+	, popestimate2020 - popestimate2010 as popestimatediff
+	, (popestimate2020 - popestimate2010) /  (popestimate2010 * 1.00) * 100.00 as percdiff
+from
+	public.us_counties_pop_est_2010_2020_raw
+where 
+	county = 0;
+
+
+
+CREATE OR REPLACE PROCEDURE create_percdiff_table_from_query() LANGUAGE plpgsql AS
+$$
+BEGIN
+    -- Create a new table
+    CREATE TABLE public.us_pop_est_2010_2020_percdiff AS
+    SELECT 
+        stname as state_name
+        , popestimate2010
+        , popestimate2020
+        , popestimate2020 - popestimate2010 as popestimatediff
+        , (popestimate2020 - popestimate2010) / (popestimate2010 * 1.00) * 100.00 as percdiff
+    FROM
+        public.us_counties_pop_est_2010_2020_raw
+    WHERE 
+        county = 0;
+
+    -- Commit the transaction
+    COMMIT;
+END;
+$$;
+
+
+CALL create_percdiff_table_from_query();
