@@ -101,6 +101,11 @@ FROM '/var/local/CrashStatistics.csv'
 WITH (FORMAT CSV, HEADER, QUOTE E'\x01');
 
 
+-- If you get the following error message when trying to import the CSV file:
+-- SQL Error [22021]: ERROR: invalid byte sequence for encoding "UTF8": 0x00
+-- Use this handy Linux CLI tool: cat CrashStatistics_2023-08.csv | tr -d '\000' > CrashStatistics_2023-08_CLEANED.csv
+
+
 -- This record's local_information has uneven numbered double-quotes:
 select * from oh.crash_statistics where local_information = 'P23041400001296';
 
