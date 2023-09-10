@@ -1,0 +1,38 @@
+-- Query to summarize Ohio vehicle crashes by county, crash severity, crash yr-month, and crashes per capita
+with oh_pop2020 as (
+select
+	stname as "State Name"
+	, ctyname as "County Name"
+	, popestimate2020 as "Pop Est 2020"
+from 
+	us_pop.us_counties_pop_est_2010_2020_raw
+where 
+	stname = 'Ohio'
+	and not(county=0)
+),
+crash_stats as (
+select 
+	county as "County Name"
+	, crash_severity as "Crash Severity"
+	, TO_CHAR(crash_datetime, 'YYYY-MM') as "Crash Yr-Month"
+	, count(*) as "Crash Count"
+from 
+	oh.crash_statistics
+group by
+	"County Name" 
+  	, "Crash Severity" 
+  	, "Crash Yr-Month"
+)
+select 
+	oh_pop2020."State Name" 
+	, oh_pop2020."County Name"
+	, oh_pop2020."Pop Est 2020"
+	, crash_stats."Crash Yr-Month"
+	, crash_stats."Crash Severity"
+	, crash_stats."Crash Count" as "Crash Count"
+	, (crash_stats."Crash Count" * 1.0 / oh_pop2020."Pop Est 2020" * 1.0) * 100.0 as "Crashes Per Capita"
+from 
+	oh_pop2020 as oh_pop2020
+	left join crash_stats as crash_stats on 
+	oh_pop2020."County Name" = crash_stats."County Name"
+;
