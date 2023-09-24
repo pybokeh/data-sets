@@ -1,0 +1,59 @@
+area_code,area_name,display_level,selectable,sort_sequence
+0000,U.S. city average,0,true,1
+0100,Northeast,0,true,5
+0110,New England,1,true,10
+0120,Middle Atlantic,1,true,11
+0200,Midwest,0,true,14
+0230,East North Central,1,true,23
+0240,West North Central,1,true,24
+0300,South,0,true,28
+0350,South Atlantic,1,true,37
+0360,East South Central,1,true,38
+0370,West South Central,1,true,39
+0400,West,0,true,43
+0480,Mountain,1,true,55
+0490,Pacific,1,true,56
+A104,"Pittsburgh, PA",1,true,9
+A210,"Cleveland-Akron, OH",1,true,19
+A212,"Milwaukee-Racine, WI",1,true,20
+A213,"Cincinnati-Hamilton, OH-KY-IN",1,true,21
+A214,"Kansas City, MO-KS",1,true,22
+A311,"Washington-Baltimore, DC-MD-VA-WV",1,true,36
+A421,"Los Angeles-Riverside-Orange County, CA",1,true,53
+A425,"Portland-Salem, OR-WA",1,true,54
+D000,Size Class D,0,true,4
+D200,Midwest - Size Class D,1,true,27
+D300,South - Size Class D,1,true,42
+N000,Size Class B/C,0,true,3
+N100,Northeast - Size Class B/C,1,true,13
+N200,Midwest - Size Class B/C,1,true,26
+N300,South - Size Class B/C,1,true,41
+N400,West - Size Class B/C,1,true,58
+S000,Size Class A,0,true,2
+S100,Northeast - Size Class A,1,true,12
+S11A,"Boston-Cambridge-Newton, MA-NH",1,true,8
+S12A,"New York-Newark-Jersey City, NY-NJ-PA",1,true,6
+S12B,"Philadelphia-Camden-Wilmington, PA-NJ-DE-MD",1,true,7
+S200,Midwest - Size Class A,1,true,25
+S23A,"Chicago-Naperville-Elgin, IL-IN-WI",1,true,15
+S23B,"Detroit-Warren-Dearborn, MI",1,true,16
+S24A,"Minneapolis-St.Paul-Bloomington, MN-WI",1,true,17
+S24B,"St. Louis, MO-IL",1,true,18
+S300,South - Size Class A,1,true,40
+S35A,"Washington-Arlington-Alexandria, DC-VA-MD-WV",1,true,34
+S35B,"Miami-Fort Lauderdale-West Palm Beach, FL",1,true,32
+S35C,"Atlanta-Sandy Springs-Roswell, GA",1,true,29
+S35D,"Tampa-St. Petersburg-Clearwater, FL",1,true,33
+S35E,"Baltimore-Columbia-Towson, MD",1,true,35
+S37A,"Dallas-Fort Worth-Arlington, TX",1,true,30
+S37B,"Houston-The Woodlands-Sugar Land, TX",1,true,31
+S400,West - Size Class A,1,true,57
+S48A,"Phoenix-Mesa-Scottsdale, AZ",1,true,49
+S48B,"Denver-Aurora-Lakewood, CO",1,true,45
+S49A,"Los Angeles-Long Beach-Anaheim, CA",1,true,47
+S49B,"San Francisco-Oakland-Hayward, CA",1,true,51
+S49C,"Riverside-San Bernardino-Ontario, CA",1,true,48
+S49D,Seattle-Tacoma-Bellevue WA,1,true,52
+S49E,"San Diego-Carlsbad, CA",1,true,50
+S49F,Urban Hawaii,1,true,46
+S49G,Urban Alaska,1,true,44

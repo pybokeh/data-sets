@@ -1,0 +1,99 @@
+create table public.cpi_u_202308 (
+    series_id text,
+    year integer,
+    period text,
+    value NUMERIC(7, 2),
+    footnote_codes text
+);
+
+COPY public.cpi_u_202308
+FROM 'C:\Users\danie\gitprojects\data-sets\cpi\cpi_u_2023-08.csv'
+WITH (FORMAT CSV, HEADER);
+
+
+CREATE TABLE public.series (
+    series_id text,
+    area_code text,
+    item_code text,
+    seasonal text,
+    periodicity_code text,
+    base_code text,
+    base_period text,
+    series_title text,
+    footnote_codes text,
+    begin_year integer,
+    begin_period text,
+    end_year integer,
+    end_period text
+);
+
+COPY public.series
+FROM 'C:\Users\danie\gitprojects\data-sets\cpi\cpi_series.csv'
+WITH (FORMAT CSV, HEADER);
+
+
+create table public.areas (
+    area_code text,
+    area_name text,
+    display_level integer,
+    selectable bool,
+    sort_sequence integer
+);
+
+COPY public.areas
+FROM 'C:\Users\danie\gitprojects\data-sets\cpi\cpi_areas.csv'
+WITH (FORMAT CSV, HEADER);
+
+create table public.period (
+    period text,
+    period_abbr text,
+    period_namem text
+);
+
+COPY public.period
+FROM 'C:\Users\danie\gitprojects\data-sets\cpi\cpi_period.csv'
+WITH (FORMAT CSV, HEADER);
+
+
+create table public.periodicity (
+    periodicity_code text,
+    periodicity_name text
+);
+
+
+COPY public.periodicity
+FROM 'C:\Users\danie\gitprojects\data-sets\cpi\cpi_periodicity.csv'
+WITH (FORMAT CSV, HEADER);
+
+
+create table public.seasonal (
+    seasonal_code text,
+    seasonal_text text
+);
+
+COPY public.seasonal
+FROM 'C:\Users\danie\gitprojects\data-sets\cpi\cpi_seasonal.csv'
+WITH (FORMAT CSV, HEADER);
+
+
+create table public.items (
+    item_code text,
+    item_name text,
+    display_level integer,
+    selectable bool,
+    sort_sequence integer
+);
+
+COPY public.items
+FROM 'C:\Users\danie\gitprojects\data-sets\cpi\cpi_items.csv'
+WITH (FORMAT CSV, HEADER);
+
+
+create table public.base (
+    base_code text,
+    base_name text
+);
+
+COPY public.base
+FROM 'C:\Users\danie\gitprojects\data-sets\cpi\cpi_base.csv'
+WITH (FORMAT CSV, HEADER);
