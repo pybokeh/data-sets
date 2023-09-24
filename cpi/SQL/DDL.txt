@@ -97,3 +97,10 @@ create table public.base (
 COPY public.base
 FROM 'C:\Users\danie\gitprojects\data-sets\cpi\cpi_base.csv'
 WITH (FORMAT CSV, HEADER);
+
+-- Found out the series id has trailing whitespaces
+UPDATE public.cpi_u_202308
+SET series_id = TRIM(TRAILING FROM series_id);
+
+UPDATE public.series
+SET series_id = TRIM(TRAILING FROM series_id);
