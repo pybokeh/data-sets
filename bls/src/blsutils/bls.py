@@ -98,7 +98,6 @@ def plot_bls_series_id(
         plt.xlabel("Year")
         plt.ylabel("Value")
         plt.suptitle(series_descr)
-        plt.title("grey=recession / blue=current year", fontsize=10)
 
         # If default of past 19 years is chosen, then add recessions and covid pandemic regions
         if past_n_years == 19:
@@ -122,10 +121,12 @@ def plot_bls_series_id(
                 alpha=0.2,
                 color="gray",
             )
+            plt.title("grey=recession / blue=current year", fontsize=10)
             plt.tight_layout()
             plt.show()
         # else don't add the recession and covid pandemic regions
         else:
+            plt.title("blue=current year", fontsize=10)
             plt.tight_layout()
             plt.show()
     except requests.exceptions.RequestException as e:
