@@ -1,9 +1,9 @@
 create table public.us_counties_pop_est_2010_2020_raw (
     SUMLEV text,
-    REGION smallint,
-    DIVISION smallint,
+    REGION text,
+    DIVISION text,
     STATE text,
-    COUNTY smallint,
+    COUNTY text,
     STNAME text,
     CTYNAME text,
     CENSUS2010POP integer,
