@@ -10,3 +10,9 @@ authors = [
   { name = "Daniel J. Kim", email = "pybokeh@protonmail.com" },
 ]
 requires-python = ">=3.8"
+dependencies = [
+    "matplotlib",
+    "seaborn",
+    "pandas",
+    "requests"
+]
