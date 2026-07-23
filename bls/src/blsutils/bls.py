@@ -73,7 +73,7 @@ def plot_bls_series_id(
                         format="%Y-%m",
                     )
                 )
-                .assign(value=df["value"].astype("float"))
+                .assign(value=pd.to_numeric(df["value"], errors="coerce"))
             )[["series_id", "year_month", "value"]]
             df_list.append(df)
 
