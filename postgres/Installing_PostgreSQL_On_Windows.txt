@@ -8,14 +8,14 @@ Download zip archive: https://www.enterprisedb.com/download-postgresql-binaries
 
 3) Create "start_postgres.bat" file with the following contents:
 @ECHO ON
-@SET PATH="%~dp0\bin";%PATH%
-@SET PGDATA=%~dp0\data
+@SET "PATH=%~dp0bin;%PATH%"
+@SET PGDATA=%~dp0data
 @SET PGDATABASE=postgres
 @SET PGUSER=postgres
-@SET PGPORT=5439
-@SET PGLOCALEDIR=%~dp0\share\locale
+@SET PGPORT=5432
+@SET PGLOCALEDIR=%~dp0share\locale
 initdb -U postgres -W -E UTF8 -D "%PGDATA%" --auth=trust
-"%~dp0\bin\pg_ctl" -D "%PGDATA%" -o "-p %PGPORT%" -l logfile start
+"%~dp0bin\pg_ctl" -D "%PGDATA%" -o "-p %PGPORT%" -l logfile start
 pause
 
 Then save "start_postgres.bat" in the root PostgreSQL installation folder.  Run this .bat/batch file once, then exit out of it.
@@ -26,7 +26,7 @@ it manually.  To add this batch file to Startup, see this article: https://www.c
 NOTE: This sets up your PostgreSQL server to be accessible from only your local machine.  To configure your PostgreSQL server
 otherwise, is beyond the scope of this batch file.
 
-5) Create "stop_postgres.bat" file with the following contents:
+4) Create "stop_postgres.bat" file with the following contents:
 @ECHO ON
 REM Shutting down the PostgreSQL server...
 "%~dp0\bin\pg_ctl" stop -D "%~dp0\data"
