@@ -1,0 +1,2 @@
+   ALTER TABLE vehicles ADD COLUMN createdOn_ts timestamptz;
+   UPDATE vehicles SET createdOn_ts = to_timestamp(createdOn, 'Dy Mon DD HH24:MI:SS "EST" YYYY');

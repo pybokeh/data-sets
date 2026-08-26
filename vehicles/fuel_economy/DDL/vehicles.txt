@@ -1,0 +1,93 @@
+CREATE TABLE vehicles (
+    id                  INTEGER PRIMARY KEY,   -- EPA's own unique vehicle record ID (not auto-generated)
+    barrels08           NUMERIC(10,4),
+    barrelsA08          NUMERIC(10,4),
+    charge120           NUMERIC(10,4),
+    charge240           NUMERIC(10,4),
+    charge240b          NUMERIC(10,4),
+    city08              INTEGER,
+    city08U             NUMERIC(10,4),
+    cityA08             INTEGER,
+    cityA08U            NUMERIC(10,4),
+    cityCD              NUMERIC(10,4),
+    cityE               NUMERIC(10,4),
+    cityUF              NUMERIC(10,4),
+    co2                 INTEGER,
+    co2A                INTEGER,
+    co2TailpipeAGpm     NUMERIC(10,4),
+    co2TailpipeGpm      NUMERIC(10,4),
+    comb08              INTEGER,
+    comb08U             NUMERIC(10,4),
+    combA08             INTEGER,
+    combA08U            NUMERIC(10,4),
+    combE               NUMERIC(10,4),
+    combinedCD          NUMERIC(10,4),
+    combinedUF          NUMERIC(10,4),
+    cylinders           INTEGER,
+    displ               NUMERIC(4,1),
+    drive               TEXT,
+    engId               INTEGER,
+    eng_dscr            TEXT,
+    feScore             INTEGER,
+    fuelCost08          INTEGER,
+    fuelCostA08         INTEGER,
+    fuelType            TEXT,
+    fuelType1           TEXT,
+    fuelType2           TEXT,
+    ghgScore            INTEGER,
+    ghgScoreA           INTEGER,
+    highway08           INTEGER,
+    highway08U          NUMERIC(10,4),
+    highwayA08          INTEGER,
+    highwayA08U         NUMERIC(10,4),
+    highwayCD           NUMERIC(10,4),
+    highwayE            NUMERIC(10,4),
+    highwayUF           NUMERIC(10,4),
+    hlv                 INTEGER,
+    hpv                 INTEGER,
+    lv2                 INTEGER,
+    lv4                 INTEGER,
+    make                TEXT,
+    model               TEXT,
+    baseModel           TEXT,
+    mpgData             TEXT,       -- 'Y'/'N' flag in source data
+    phevBlended         BOOLEAN,
+    pv2                 INTEGER,
+    pv4                 INTEGER,
+    range               INTEGER,
+    rangeA              NUMERIC(10,4),
+    rangeCity           NUMERIC(10,4),
+    rangeCityA          NUMERIC(10,4),
+    rangeHwy            NUMERIC(10,4),
+    rangeHwyA           NUMERIC(10,4),
+    trany               TEXT,
+    trans_dscr          TEXT,
+    UCity               NUMERIC(10,4),
+    UCityA              NUMERIC(10,4),
+    UHighway            NUMERIC(10,4),
+    UHighwayA           NUMERIC(10,4),
+    VClass              TEXT,
+    year                INTEGER,
+    youSaveSpend        INTEGER,
+    guzzler             TEXT,
+    tCharger             TEXT,       -- 'T' or blank
+    sCharger             TEXT,       -- 'S' or blank
+    atvType             TEXT,       -- e.g. Hybrid, EV, FFV
+    evMotor             TEXT,
+    mfrCode             TEXT,
+    c240Dscr            TEXT,
+    c240bDscr           TEXT,
+    startStop           TEXT,       -- 'Y'/'N' or blank
+    phevCity            INTEGER,
+    phevHwy             INTEGER,
+    phevComb            INTEGER,
+    createdOn           TEXT,       -- raw source format, e.g. 'Tue Jan 01 00:00:00 EST 2013'
+    modifiedOn          TEXT
+);
+
+
+
+
+copy public.vehicles (id,barrels08,barrelsA08,charge120,charge240,city08,city08U,cityA08,cityA08U,cityCD,cityE,cityUF,co2,co2A,co2TailpipeAGpm,co2TailpipeGpm,comb08,comb08U,combA08,combA08U,combE,combinedCD,combinedUF,cylinders,displ,drive,engId,eng_dscr,feScore,fuelCost08,fuelCostA08,fuelType,fuelType1,ghgScore,ghgScoreA,highway08,highway08U,highwayA08,highwayA08U,highwayCD,highwayE,highwayUF,hlv,hpv,lv2,lv4,make,model,mpgData,phevBlended,pv2,pv4,range,rangeCity,rangeCityA,rangeHwy,rangeHwyA,trany,UCity,UCityA,UHighway,UHighwayA,VClass,year,youSaveSpend,baseModel,guzzler,trans_dscr,tCharger,sCharger,atvType,fuelType2,rangeA,evMotor,mfrCode,c240Dscr,charge240b,c240bDscr,createdOn,modifiedOn,startStop,phevCity,phevHwy,phevComb)
+FROM '/path/to/vehicles.csv'
+WITH (FORMAT csv, HEADER true, NULL '');
