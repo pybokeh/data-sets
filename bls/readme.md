@@ -10,13 +10,12 @@ you have the bls series ID that you want to plot.
 
 Example usage:
 ```python
+from dotenv import load_dotenv
 from blsutils import plot_bls_series_id
-from pathlib import Path
-import configparser
 
-config = configparser.ConfigParser()
-config.read(Path.home() / '.config' / 'config.ini')
-bls_key = config['bls']['secretkey']
+load_dotenv()
+
+bls_key: str = os.environ["BLS_API_KEY"]
 
 plot_bls_series_id(
     series_id='CUSR0000SS47014',
