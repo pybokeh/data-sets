@@ -30,6 +30,7 @@ notebook or the `blsutils` package found in the `src` directory.
 #### BLS Index Series
 - Complete list of CPI series ID: https://download.bls.gov/pub/time.series/cu/cu.series
 - Complete list of national unemployment series ID: https://download.bls.gov/pub/time.series/ln/ln.series
+- Complete list of Current Employment Statistics series ID and their descriptions: https://download.bls.gov/pub/time.series/ce/ce.series
 
 #### Avg Price Series (NOTE: Unfortunately, can not tell by description if the series have current prices or only historical (only early start and end years)
 - https://download.bls.gov/pub/time.series/ap/ap.series
