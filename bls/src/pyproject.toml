@@ -12,7 +12,8 @@ authors = [
 requires-python = ">=3.8"
 dependencies = [
     "matplotlib",
-    "seaborn",
-    "pandas",
-    "requests"
+    "polars",
+    "numpy",
+    "requests",
+    "python-dotenv"
 ]

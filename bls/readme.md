@@ -27,3 +27,10 @@ plot_bls_series_id(
 
 If you want the actual, low-level Python code used to create the plots, look at the [BLS_API.ipynb](BLS_API.ipynb) 
 notebook or the `blsutils` package found in the `src` directory.
+
+#### BLS Index Series
+- Complete list of CPI series ID: https://download.bls.gov/pub/time.series/cu/cu.series
+- Complete list of national unemployment series ID: https://download.bls.gov/pub/time.series/ln/ln.series
+
+#### Avg Price Series (NOTE: Unfortunately, can not tell by description if the series have current prices or only historical (only early start and end years)
+- https://download.bls.gov/pub/time.series/ap/ap.series
