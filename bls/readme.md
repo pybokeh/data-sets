@@ -10,18 +10,12 @@ you have the bls series ID that you want to plot.
 
 Example usage:
 ```python
-from dotenv import load_dotenv
-from blsutils import plot_bls_series_id
+from blsutils import BLSClient
 
-load_dotenv()
-
-bls_key: str = os.environ["BLS_API_KEY"]
-
-plot_bls_series_id(
-    series_id='CUSR0000SS47014',
-    series_descr='Gasoline, unleaded regular in U.S. city average, all urban consumers, seasonally adjusted',
-    bls_key=bls_key
-)
+with BLSClient() as client:  # key comes from BLS_API_KEY / .env
+    df = client.fetch_df("CES0000000001", 2018, 2026)
+    client.plot_bls_series(df, "Jobs Added - All employees, thousands, total nonfarm, seasonally adjusted")
+    print(df.tail())
 ```
 
 If you want the actual, low-level Python code used to create the plots, look at the [BLS_API.ipynb](BLS_API.ipynb) 

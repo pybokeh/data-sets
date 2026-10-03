@@ -21,8 +21,7 @@ In your specific code, `__all__` lists the symbols that should be considered par
 someone imports this module using wildcard imports (`from module import *`), only the names listed in `__all__` will be
 imported into their namespace, providing a clear and controlled interface to the module's functionality.
 """
-
-from .bls import plot_bls_series_id
+from .bls import BLSClient
 __all__ = [
-    plot_bls_series_id
+    BLSClient,
 ]

@@ -1,135 +1,125 @@
-from datetime import date
-from dateutil.relativedelta import relativedelta
 import json
 import matplotlib.pyplot as plt
-import pandas as pd
+import os
+import polars as pl
 import requests
-import seaborn as sns
+from dotenv import load_dotenv
 
+_URL = "https://api.bls.gov/publicAPI/v2/timeseries/data/"
 
-def plot_bls_series_id(
-    series_id: str, series_descr: str, bls_key: str, past_n_years: int = 19
-):
-    """
-    A function that plots a BLS series
+class BLSClient:
+    def __init__(self, api_key: str | None = None):
+        if api_key is None:
+            # Read a .env file (if present) into the environment, then look up the key.
+            # Variables already set in the real environment are not overridden.
+            load_dotenv()
+            api_key = os.getenv("BLS_API_KEY")
+        if not api_key:
+            raise ValueError(
+                "No BLS API key found. Pass api_key=... or set BLS_API_KEY "
+                "in your environment or a .env file."
+            )
+        self.api_key = api_key
+        self._session = requests.Session()
 
-    Parameters
-    ----------
-    series_id : str
-        Series ID
-    series_descr : str
-        Series description
-    bls_key : str
-        BLS secret key that you need to obtain from registering here: https://data.bls.gov/registrationEngine/
-    past_n_years : int
-        Number of years worth of data to be plotted.  By default, will plot last 19 years' worth of data (bls.gov's max)
-
-    Returns
-    -------
-    A MATPLOTLIB line chart with vertical regions to indicate when recessions have occurred to add historical context
-    """
-
-    try:
-        current_date = date.today()
-        current_year = current_date.year
-        start_year = current_year - past_n_years
-
-        # These 2 variables are used to shade the current year region
-        previous_month = (current_date - relativedelta(months=1)).strftime("%Y-%m-%d")[:7] + "-01"
-        start_of_current_year = str(current_year) + "-01-01"
-
-        headers = {"Content-type": "application/json"}
-        data = json.dumps(
-            {
+    def fetch_raw(self, series_id: str, start_year: int, end_year: int) -> str:
+        """Return the raw BLS JSON response text."""
+        response = self._session.post(
+            _URL,
+            json={
                 "seriesid": [series_id],
                 "startyear": str(start_year),
-                "endyear": str(current_year),
-                "registrationkey": bls_key,
-            }
+                "endyear": str(end_year),
+                "registrationkey": self.api_key,
+            },
+            timeout=30,
         )
-        p = requests.post(
-            "https://api.bls.gov/publicAPI/v2/timeseries/data/",
-            data=data,
-            headers=headers,
-        )
-        p.raise_for_status()  # Raise an exception for HTTP errors
-        json_data = json.loads(p.text)
+        response.raise_for_status()
+        return response.text
 
-        df_list = []
-        for series in json_data["Results"]["series"]:
-            df = pd.DataFrame.from_dict(series["data"])
-            # Transformations:
-            # Create series_id column
-            # Filter to just periods M01, M02, ..., M12
-            # Create year-month column as date data type
-            # Cast value column as float data type
-            # Keep only series_id, year_month, and value columns
-            df = (
-                df.assign(series_id=series["seriesID"])
-                .query("(period >= 'M01') & (period <= 'M12')")
-                .assign(
-                    year_month=pd.to_datetime(
-                        df["year"].astype("str") + "-" + df["period"].str[-2:],
-                        format="%Y-%m",
-                    )
+    def fetch_df(self, series_id: str, start_year: int, end_year: int) -> pl.DataFrame:
+        """Fetch and parse into a polars DataFrame in one call."""
+        return self.parse_df(self.fetch_raw(series_id, start_year, end_year))
+
+    @staticmethod
+    def parse_df(data_str: str) -> pl.DataFrame:
+        """Parse previously saved raw JSON text into a DataFrame."""
+        parsed = json.loads(data_str)
+
+        # BLS can return HTTP 200 with an error described in the body
+        if parsed.get("status") != "REQUEST_SUCCEEDED":
+            raise ValueError(f"BLS API error: {parsed.get('message')}")
+
+        series = parsed["Results"]["series"][0]
+        series_id = series["seriesID"]
+
+        records = [
+            {"year": d["year"], "period": d["period"], "value": d["value"]}
+            for d in series["data"]
+        ]
+
+        # Explicit schema so an empty result still has the expected columns
+        schema = {"year": pl.Utf8, "period": pl.Utf8, "value": pl.Utf8}
+
+        return (
+            pl.DataFrame(records, schema=schema)
+            # Monthly values only; M13 is the annual average
+            .filter(
+                (pl.col("period") >= "M01") & (pl.col("period") <= "M12")
+            )
+            .with_columns(
+                pl.lit(series_id).alias("series_id"),
+                pl.concat_str(
+                    pl.col("year") + "-" + pl.col("period").str.slice(-2) + "-01"
                 )
-                .assign(value=pd.to_numeric(df["value"], errors="coerce"))
-            )[["series_id", "year_month", "value"]]
-            df_list.append(df)
-
-        df_final = pd.concat(df_list, axis="columns")
-
-        fig, ax = plt.subplots(figsize=(8, 5))
-        sns.lineplot(
-            data=df_final,
-            x="year_month",
-            y="value",
-            ax=ax,
+                .str.to_date("%Y-%m-%d")
+                .alias("year_month"),
+                # Missing values are "-", which becomes null with strict=False
+                pl.col("value").cast(pl.Float64, strict=False),
+            )
+            .select("series_id", "year_month", "year", "period", "value")
+            .sort("year_month")  # BLS returns newest first
         )
-        # Created shaded region for current year
-        ax.fill_between(
-            x=[start_of_current_year, previous_month],
-            y1=[int(df_final["value"].max()) + 1, int(df_final["value"].max()) + 1],
-            alpha=0.2,
-            color="blue",
+
+    @staticmethod
+    def plot_bls_series(data: pl.DataFrame, series_desc: str):
+        fig, ax = plt.subplots(figsize=(10, 5))
+
+        ax.plot(
+            data["year_month"].to_numpy(),
+            data["value"].to_numpy(),  # nulls become NaN, which matplotlib draws as a gap
         )
-        ax.set_ylim(int(df_final["value"].min()) - 1, int(df_final["value"].max()) + 1)
+
+        ax.set_xlabel("Year")
+        ax.set_ylabel("Value")
+        ax.set_title(f'Series ID: {data.unique("series_id").select("series_id").item()}' + '\n' + series_desc)
         ax.spines[["right", "top"]].set_visible(False)
-        plt.xlabel("Year")
-        plt.ylabel("Value")
-        plt.suptitle(series_descr)
 
-        # If default of past 19 years is chosen, then add recessions and covid pandemic regions
-        if past_n_years == 19:
-            # Create shaded vertical regions that indicate when recessions and COVID-19 pandemic happened
-            # https://en.wikipedia.org/wiki/List_of_recessions_in_the_United_States
-            ax.fill_between(
-                x=["2001-03-01", "2001-11-01"],
-                y1=[int(df_final["value"].max()) + 1, int(df_final["value"].max()) + 1],
-                alpha=0.2,
-                color="gray",
-            )
-            ax.fill_between(
-                x=["2007-12-01", "2009-06-01"],
-                y1=[int(df_final["value"].max()) + 1, int(df_final["value"].max()) + 1],
-                alpha=0.2,
-                color="gray",
-            )
-            ax.fill_between(
-                x=["2020-02-01", "2020-04-01"],
-                y1=[int(df_final["value"].max()) + 1, int(df_final["value"].max()) + 1],
-                alpha=0.2,
-                color="gray",
-            )
-            plt.title("grey=recession / blue=current year", fontsize=10)
-            plt.tight_layout()
-            plt.show()
-        # else don't add the recession and covid pandemic regions
-        else:
-            plt.title("blue=current year", fontsize=10)
-            plt.tight_layout()
-            plt.show()
-    except requests.exceptions.RequestException as e:
-        print("An error occurred during the HTTP request:", e)
-    except (ValueError, KeyError) as e:
-        print("An error occurred while processing the data:", e)
+        plt.tight_layout()
+        plt.show()
+
+
+# Following methods allow for use with Context Manager
+    def close(self) -> None:
+        """Close the underlying HTTP session."""
+        self._session.close()
+
+    def __enter__(self) -> "BLSClient":
+        return self
+
+    def __exit__(self, *exc_info) -> None:
+        self.close()
+
+
+if __name__ == "__main__":
+    with BLSClient() as client:  # key comes from BLS_API_KEY / .env
+        raw = client.fetch_raw("CUUR0000SA0", 2020, 2025)  # workflow 1
+        df = client.fetch_df("CUUR0000SA0", 2020, 2025)    # workflow 2
+        client.plot_bls_series(df, "chart title")
+        print(df.head())
+
+    with pl.Config(tbl_rows=1000):  # -1 means show all rows
+        print(df.sort(["year", "period"]))
+
+# Discovered that in the BLS API, the "value" attribute can contain dash/"-" to indicate missing data
+# Background info: https://www.bls.gov/bls/bls-handling-of-missing-data.htm
