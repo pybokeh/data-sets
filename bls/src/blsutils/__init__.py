@@ -23,5 +23,5 @@ imported into their namespace, providing a clear and controlled interface to the
 """
 from .bls import BLSClient
 __all__ = [
-    BLSClient,
+    "BLSClient",
 ]
