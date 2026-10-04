@@ -18,13 +18,33 @@ with BLSClient() as client:  # key comes from BLS_API_KEY / .env
     print(df.tail())
 ```
 
-If you want the actual, low-level Python code used to create the plots, look at the [BLS_API.ipynb](BLS_API.ipynb) 
-notebook or the `blsutils` package found in the `src` directory.
+The source code is located [here](src/blsutils/bls.py)
+
+**References:**
+- URL: https://www.bls.gov/
+- Developer API: https://www.bls.gov/developers/home.htm
+- Registering for the API V2: https://www.bls.gov/developers/api_faqs.htm#register3
+- How to add optional parameters like the secret key to the request: https://www.bls.gov/developers/api_signature_v2.htm#parameters
+- Complete list of CPI series ID: https://download.bls.gov/pub/time.series/cu/cu.series
+- Complete list of national unemployment series ID: https://download.bls.gov/pub/time.series/ln/ln.series
+
+
+**Popular series ID:**
+- LNS14000000: National unemployment rate - seasonally adjusted
+- CUSR0000SA0: All items in U.S. city average, all urban consumers, seasonally adjusted
+- CUSR0000SETA: New and used motor vehicles in U.S. city average, all urban consumers, seasonally adjusted
+- CUSR0000SETA01: New vehicles in U.S. city average, all urban consumers, seasonally adjusted
+- CUSR0000SETA02: Used cars and trucks in U.S. city average, all urban consumers, seasonally adjusted
+- CUSR0000SAF: Food and beverages in U.S. city average, all urban consumers, seasonally adjusted
+- CUSR0000SACL1E4: Commodities less food, energy, and used cars and trucks in U.S. city average, all urban consumers, seasonally adjusted
+- CUSR0000SACE: Energy commodities in U.S. city average, all urban consumers, seasonally adjusted
+- CUSR0000SS47014: Gasoline, unleaded regular in U.S. city average, all urban consumers, seasonally adjusted
+- CUSR0000SAH: Housing in U.S. city average, all urban consumers, seasonally adjusted
 
 #### BLS Index Series
 - Complete list of CPI series ID: https://download.bls.gov/pub/time.series/cu/cu.series
 - Complete list of national unemployment series ID: https://download.bls.gov/pub/time.series/ln/ln.series
 - Complete list of Current Employment Statistics series ID and their descriptions: https://download.bls.gov/pub/time.series/ce/ce.series
 
-#### Avg Price Series (NOTE: Unfortunately, can not tell by description if the series have current prices or only historical (only early start and end years)
+#### Avg Price Series (NOTE: Unfortunately, can not tell by description if the series have current prices or only historical (only certain start and end years)
 - https://download.bls.gov/pub/time.series/ap/ap.series
