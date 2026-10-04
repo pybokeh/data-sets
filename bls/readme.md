@@ -1,7 +1,7 @@
 # Bureau of Labor Statistics
 
 #### To use the custom blsutils package found in the src direcctory:
-Navigate to `src` directory then issue the following command:
+Navigate to project's directory or directory containing `pyproject.toml` file, then issue the following command:
 
 `pip install -e .`
 
@@ -12,7 +12,7 @@ Example usage:
 ```python
 from blsutils import BLSClient
 
-with BLSClient() as client:  # key comes from BLS_API_KEY / .env
+with BLSClient() as client:
     df = client.fetch_df("CES0000000001", 2018, 2026)
     client.plot_bls_series(df, "Jobs Added - All employees, thousands, total nonfarm, seasonally adjusted")
     print(df.tail())
