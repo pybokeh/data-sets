@@ -95,6 +95,8 @@ class BLSClient:
         ax.set_title(f'Series ID: {data.unique("series_id").select("series_id").item()}' + '\n' + series_desc)
         ax.spines[["right", "top"]].set_visible(False)
 
+        ax.grid(axis="both", which="major")
+
         plt.tight_layout()
         plt.show()
 
@@ -113,9 +115,9 @@ class BLSClient:
 
 if __name__ == "__main__":
     with BLSClient() as client:  # key comes from BLS_API_KEY / .env
-        raw = client.fetch_raw("CUUR0000SA0", 2020, 2025)  # workflow 1
-        df = client.fetch_df("CUUR0000SA0", 2020, 2025)    # workflow 2
-        client.plot_bls_series(df, "chart title")
+        raw = client.fetch_raw("CES0000000001", 2006, 2026)  # workflow 1
+        df = client.fetch_df("CES0000000001", 2006, 2026)    # workflow 2
+        client.plot_bls_series(df, "Jobs Added (in thousands)")
         print(df.head())
 
     with pl.Config(tbl_rows=1000):  # -1 means show all rows
