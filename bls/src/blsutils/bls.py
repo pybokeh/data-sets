@@ -44,14 +44,14 @@ class BLSClient:
     @staticmethod
     def parse_df(data_str: str) -> pl.DataFrame:
         """Parse previously saved raw JSON text into a DataFrame."""
-        parsed = json.loads(data_str)
+        parsed: dict = json.loads(data_str)
 
         # BLS can return HTTP 200 with an error described in the body
         if parsed.get("status") != "REQUEST_SUCCEEDED":
             raise ValueError(f"BLS API error: {parsed.get('message')}")
 
-        series = parsed["Results"]["series"][0]
-        series_id = series["seriesID"]
+        series: dict = parsed["Results"]["series"][0]
+        series_id: str = series["seriesID"]
 
         records = [
             {"year": d["year"], "period": d["period"], "value": d["value"]}
@@ -59,7 +59,7 @@ class BLSClient:
         ]
 
         # Explicit schema so an empty result still has the expected columns
-        schema = {"year": pl.Utf8, "period": pl.Utf8, "value": pl.Utf8}
+        schema: dict = {"year": pl.Utf8, "period": pl.Utf8, "value": pl.Utf8}
 
         return (
             pl.DataFrame(records, schema=schema)
