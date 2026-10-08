@@ -1,0 +1,26 @@
+---
+title: "BLSUtilities Usage"
+format:
+  html:
+    code-fold: true
+    grid:
+      sidebar-width: 250px
+      body-width: 1100px
+      margin-width: 250px
+      gutter-width: 1.5rem
+jupyter: pydata_dev
+---
+
+
+```{python}
+#| fig-cap: "A plot of BLS Series ID"
+
+from blsutils import BLSClient
+import matplotlib.pyplot as plt
+import polars as pl
+
+with BLSClient() as client:
+    df = client.fetch_df(series_id="CES0000000001", start_year=2007, end_year=2026)
+    client.plot_bls_series(df, "Jobs Added - All employees, thousands, total nonfarm, seasonally adjusted")
+    print(df.tail())
+```
