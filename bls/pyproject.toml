@@ -9,7 +9,7 @@ description = "Utilities for working with BLS data or its api"
 authors = [
   { name = "Daniel J. Kim", email = "pybokeh@protonmail.com" },
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.13"
 dependencies = [
     "matplotlib",
     "polars",

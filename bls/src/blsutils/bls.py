@@ -1,6 +1,8 @@
 import json
-import matplotlib.pyplot as plt
 import os
+from typing import Self
+
+import matplotlib.pyplot as plt
 import polars as pl
 import requests
 from dotenv import load_dotenv
@@ -106,7 +108,7 @@ class BLSClient:
         """Close the underlying HTTP session."""
         self._session.close()
 
-    def __enter__(self) -> "BLSClient":
+    def __enter__(self) -> Self:
         return self
 
     def __exit__(self, *exc_info) -> None:
@@ -115,9 +117,9 @@ class BLSClient:
 
 if __name__ == "__main__":
     with BLSClient() as client:  # key comes from BLS_API_KEY / .env
-        raw = client.fetch_raw("CES0000000001", 2006, 2026)  # workflow 1
-        df = client.fetch_df("CES0000000001", 2006, 2026)    # workflow 2
-        client.plot_bls_series(df, "Jobs Added (in thousands)")
+        raw = client.fetch_raw("LASST510000000000003", 2018, 2026)  # workflow 1
+        df = client.fetch_df("LASST510000000000003", 2018, 2026)    # workflow 2
+        client.plot_bls_series(df, "Unemployment Rate: Virginia")
         print(df.head())
 
     with pl.Config(tbl_rows=1000):  # -1 means show all rows
