@@ -26,6 +26,15 @@ class BLSClient:
 
     def fetch_raw(self, series_id: str, start_year: int, end_year: int) -> str:
         """Return the raw BLS JSON response text."""
+
+        if end_year - start_year > 19:  # 20 calendar years inclusive
+            print(f"Requested {end_year - start_year + 1} years; BLS allows at most 20 "
+                  "per request. Your data was truncated.")
+            # raise ValueError(
+            #     f"Requested {end_year - start_year + 1} years; BLS allows at most 20 "
+            #     "per request. Narrow the range or use fetch_df_chunked()."
+            # )
+
         response = self._session.post(
             _URL,
             json={
@@ -85,7 +94,7 @@ class BLSClient:
 
     @staticmethod
     def plot_bls_series(data: pl.DataFrame, series_desc: str):
-        fig, ax = plt.subplots(figsize=(10, 5))
+        _fig, ax = plt.subplots(figsize=(10, 5))
 
         ax.plot(
             data["year_month"].to_numpy(),
@@ -117,9 +126,9 @@ class BLSClient:
 
 if __name__ == "__main__":
     with BLSClient() as client:  # key comes from BLS_API_KEY / .env
-        raw = client.fetch_raw("LASST510000000000003", 2018, 2026)  # workflow 1
-        df = client.fetch_df("LASST510000000000003", 2018, 2026)    # workflow 2
-        client.plot_bls_series(df, "Unemployment Rate: Virginia")
+        raw = client.fetch_raw("CES0000000001", 2007, 2026)  # workflow 1
+        df = client.fetch_df("CES0000000001", 2007, 2026)    # workflow 2
+        client.plot_bls_series(df, "Jobs Added - All employees, thousands, total nonfarm, seasonally adjusted")
         print(df.head())
 
     with pl.Config(tbl_rows=1000):  # -1 means show all rows
