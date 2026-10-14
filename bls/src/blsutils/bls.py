@@ -28,7 +28,7 @@ class BLSClient:
         """Return the raw BLS JSON response text."""
 
         if end_year - start_year > 19:  # 20 calendar years inclusive
-            print(f"Requested {end_year - start_year + 1} years; BLS allows at most 20 "
+            print(f"Requested {end_year - start_year } years; BLS allows at most 19 "
                   "per request. Your data was truncated.")
             # raise ValueError(
             #     f"Requested {end_year - start_year + 1} years; BLS allows at most 20 "
