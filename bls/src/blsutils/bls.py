@@ -28,7 +28,7 @@ class BLSClient:
         """Return the raw BLS JSON response text."""
 
         if end_year - start_year > 19:  # 20 calendar years inclusive
-            print(f"Requested {end_year - start_year } years; BLS allows at most 19 "
+            print(f"** WARNING ** Requested {end_year - start_year } years; BLS allows at most 19 "
                   "per request. Your data was truncated.")
 
         response = self._session.post(
