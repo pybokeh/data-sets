@@ -46,6 +46,7 @@ The source code is located [here](src/blsutils/bls.py)
 - Complete list of national unemployment series ID: https://download.bls.gov/pub/time.series/ln/ln.series
 - Complete list of local/state level unemployment series ID: https://download.bls.gov/pub/time.series/la/
   - site: https://www.bls.gov/lau/tables.htm
+  - monthly data: https://www.bls.gov/lau/rdscnp16.htm#data
 - Complete list of Current Employment Statistics series ID and their descriptions: https://download.bls.gov/pub/time.series/ce/ce.series
 
 #### Avg Price Series (NOTE: Unfortunately, can not tell by description if the series have current prices or only historical (only certain start and end years)
