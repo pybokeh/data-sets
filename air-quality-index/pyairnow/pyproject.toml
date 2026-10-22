@@ -1,0 +1,18 @@
+[project]
+name = "pyairnow"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "pybokeh", email = "pybokeh@protonmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "polars>=2.0.0",
+    "python-dotenv>=1.2.4",
+    "requests>=2.34.2",
+]
+
+[build-system]
+requires = ["uv_build>=0.13.4,<0.14.0"]
+build-backend = "uv_build"
