@@ -7,6 +7,12 @@ https://aqs.epa.gov/aqsweb/airdata/download_files.html
 ## Air Now API
 https://docs.airnowapi.org/webservices
 
+#### Browsable file explorer of AirNow data sets
+https://files.airnowtech.org/
+
+#### Data dictionary of AirNow data sets
+https://docs.airnowapi.org/files - see "Field Specifications" at end of each PDF
+
 #### Example URL with lat/lon search:
 https://www.airnowapi.org/aq/observation/current/ziplatlong/?format=text/csv\&latitude=39.0509\&longitude=-121.4453\&API\_KEY=YOUR-API-KEY
 
