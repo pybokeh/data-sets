@@ -51,3 +51,6 @@ The source code is located [here](src/blsutils/bls.py)
 
 #### Avg Price Series (NOTE: Unfortunately, can not tell by description if the series have current prices or only historical (only certain start and end years)
 - https://download.bls.gov/pub/time.series/ap/ap.series
+
+#### Occupational Employment and Wage Statistics
+- www.bls.gov/oes/tables.htm
