@@ -2239,11 +2239,11 @@ if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.M
 
 <div class="quarto-title-meta column-page">
 
-    
-  
-    
+
+
+
   </div>
-  
+
 
 
 </header>
@@ -2262,7 +2262,7 @@ if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.M
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Last 13 recent months of data</code></pre>
+<pre><code>Last 13 recent months of data - values in thousands</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div id="ywgpixxnex" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -3173,7 +3173,7 @@ float cookTorranceSpecular(
   float G1 = (2.0 * NdotH * VdotN) / VdotH;
   float G2 = (2.0 * NdotH * LdotN) / LdotH;
   float G = min(1.0, min(G1, G2));
-  
+
   //Distribution term
   float D = beckmannDistribution(NdotH, roughness);
 
@@ -3185,7 +3185,7 @@ float cookTorranceSpecular(
 }
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -3333,7 +3333,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -3382,7 +3382,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -3465,7 +3465,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -3551,7 +3551,7 @@ vec4 packFloat(float v) {
 }
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -3654,7 +3654,7 @@ float cookTorranceSpecular(
   float G1 = (2.0 * NdotH * VdotN) / VdotH;
   float G2 = (2.0 * NdotH * LdotN) / LdotH;
   float G = min(1.0, min(G1, G2));
-  
+
   //Distribution term
   float D = beckmannDistribution(NdotH, roughness);
 
@@ -3668,7 +3668,7 @@ float cookTorranceSpecular(
 //#pragma glslify: beckmann = require(glsl-specular-beckmann) // used in gl-surface3d
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -3747,7 +3747,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -3782,7 +3782,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -3856,7 +3856,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -3889,7 +3889,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -3965,7 +3965,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -4022,7 +4022,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -4080,7 +4080,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -4140,7 +4140,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -4176,7 +4176,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -4352,7 +4352,7 @@ float cookTorranceSpecular(
   float G1 = (2.0 * NdotH * VdotN) / VdotH;
   float G2 = (2.0 * NdotH * LdotN) / LdotH;
   float G = min(1.0, min(G1, G2));
-  
+
   //Distribution term
   float D = beckmannDistribution(NdotH, roughness);
 
@@ -4364,7 +4364,7 @@ float cookTorranceSpecular(
 }
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -4475,7 +4475,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -4563,7 +4563,7 @@ float beckmannSpecular(
 }
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -4665,7 +4665,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -6324,7 +6324,7 @@ maplibre-gl/dist/maplibre-gl.mjs:
 window.Plotly = Plotly;
 return Plotly;
 }));</script>                <div id="09b6ef56-bf9a-4374-ad22-2e0a40994e23" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("09b6ef56-bf9a-4374-ad22-2e0a40994e23")) {                    Plotly.newPlot(                        "09b6ef56-bf9a-4374-ad22-2e0a40994e23",                        [{"hovertemplate":"%{x|%b %Y}\u003cbr\u003e%{y:,.0f}k jobs\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#d62728","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#d62728","#2ca02c","#d62728","#2ca02c","#d62728","#2ca02c","#d62728","#2ca02c","#d62728","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#d62728","#2ca02c","#2ca02c"]},"x":["2017-01-01","2017-02-01","2017-03-01","2017-04-01","2017-05-01","2017-06-01","2017-07-01","2017-08-01","2017-09-01","2017-10-01","2017-11-01","2017-12-01","2018-01-01","2018-02-01","2018-03-01","2018-04-01","2018-05-01","2018-06-01","2018-07-01","2018-08-01","2018-09-01","2018-10-01","2018-11-01","2018-12-01","2019-01-01","2019-02-01","2019-03-01","2019-04-01","2019-05-01","2019-06-01","2019-07-01","2019-08-01","2019-09-01","2019-10-01","2019-11-01","2019-12-01","2024-01-01","2024-02-01","2024-03-01","2024-04-01","2024-05-01","2024-06-01","2024-07-01","2024-08-01","2024-09-01","2024-10-01","2024-11-01","2024-12-01","2025-01-01","2025-02-01","2025-03-01","2025-04-01","2025-05-01","2025-06-01","2025-07-01","2025-08-01","2025-09-01","2025-10-01","2025-11-01","2025-12-01","2026-01-01","2026-02-01","2026-03-01","2026-04-01","2026-05-01","2026-06-01","2026-07-01","2026-08-01","2026-09-01"],"y":[220.0,218.0,124.0,205.0,205.0,203.0,189.0,147.0,89.0,141.0,223.0,151.0,137.0,394.0,226.0,140.0,322.0,218.0,60.0,257.0,81.0,169.0,90.0,192.0,251.0,7.0,228.0,296.0,27.0,220.0,99.0,232.0,196.0,95.0,207.0,127.0,175.0,206.0,228.0,64.0,78.0,87.0,53.0,9.0,155.0,33.0,134.0,237.0,-48.0,42.0,67.0,108.0,13.0,-20.0,64.0,-70.0,76.0,-140.0,41.0,-17.0,160.0,-156.0,214.0,148.0,63.0,31.0,-10.0,133.0,29.0],"type":"bar"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","margin":{"b":0,"l":0,"r":0,"t":30},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"title":{"text":"Monthly Change in Nonfarm Payroll Employment"},"xaxis":{"title":{"text":"Month"}},"yaxis":{"title":{"text":"Jobs added (thousands)"}},"bargap":0.1,"shapes":[{"line":{"color":"black","width":1},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":0,"y1":0,"yref":"y"}]},                        {"responsive": true}                    ).then(function(){
-                            
+
 var gd = document.getElementById('09b6ef56-bf9a-4374-ad22-2e0a40994e23');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
@@ -6363,7 +6363,7 @@ if (outputEl) {{
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Last 13 recent months of data</code></pre>
+<pre><code>Last 13 recent months of data - values in thousands</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div id="oisvtqcpxh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -7026,7 +7026,7 @@ float cookTorranceSpecular(
   float G1 = (2.0 * NdotH * VdotN) / VdotH;
   float G2 = (2.0 * NdotH * LdotN) / LdotH;
   float G = min(1.0, min(G1, G2));
-  
+
   //Distribution term
   float D = beckmannDistribution(NdotH, roughness);
 
@@ -7038,7 +7038,7 @@ float cookTorranceSpecular(
 }
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -7186,7 +7186,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -7235,7 +7235,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -7318,7 +7318,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -7404,7 +7404,7 @@ vec4 packFloat(float v) {
 }
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -7507,7 +7507,7 @@ float cookTorranceSpecular(
   float G1 = (2.0 * NdotH * VdotN) / VdotH;
   float G2 = (2.0 * NdotH * LdotN) / LdotH;
   float G = min(1.0, min(G1, G2));
-  
+
   //Distribution term
   float D = beckmannDistribution(NdotH, roughness);
 
@@ -7521,7 +7521,7 @@ float cookTorranceSpecular(
 //#pragma glslify: beckmann = require(glsl-specular-beckmann) // used in gl-surface3d
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -7600,7 +7600,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -7635,7 +7635,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -7709,7 +7709,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -7742,7 +7742,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -7818,7 +7818,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -7875,7 +7875,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -7933,7 +7933,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -7993,7 +7993,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -8029,7 +8029,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -8205,7 +8205,7 @@ float cookTorranceSpecular(
   float G1 = (2.0 * NdotH * VdotN) / VdotH;
   float G2 = (2.0 * NdotH * LdotN) / LdotH;
   float G = min(1.0, min(G1, G2));
-  
+
   //Distribution term
   float D = beckmannDistribution(NdotH, roughness);
 
@@ -8217,7 +8217,7 @@ float cookTorranceSpecular(
 }
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -8328,7 +8328,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -8416,7 +8416,7 @@ float beckmannSpecular(
 }
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -8518,7 +8518,7 @@ void main() {
 #define GLSLIFY 1
 
 bool outOfRange(float a, float b, float p) {
-  return ((p > max(a, b)) || 
+  return ((p > max(a, b)) ||
           (p < min(a, b)));
 }
 
@@ -10177,7 +10177,7 @@ maplibre-gl/dist/maplibre-gl.mjs:
 window.Plotly = Plotly;
 return Plotly;
 }));</script>                <div id="490963e2-1258-4c06-9bea-c62887e7ed3a" class="plotly-graph-div" style="height:100%; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("490963e2-1258-4c06-9bea-c62887e7ed3a")) {                    Plotly.newPlot(                        "490963e2-1258-4c06-9bea-c62887e7ed3a",                        [{"hovertemplate":"%{x|%b %Y}\u003cbr\u003e%{y:,.0f}k jobs\u003cextra\u003e\u003c\u002fextra\u003e","marker":{"color":["#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#d62728","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#d62728","#d62728","#2ca02c","#d62728","#2ca02c","#2ca02c","#d62728","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#d62728","#2ca02c","#d62728","#2ca02c","#2ca02c","#2ca02c","#d62728","#2ca02c","#d62728","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c","#2ca02c"]},"x":["2017-01-01","2017-02-01","2017-03-01","2017-04-01","2017-05-01","2017-06-01","2017-07-01","2017-08-01","2017-09-01","2017-10-01","2017-11-01","2017-12-01","2018-01-01","2018-02-01","2018-03-01","2018-04-01","2018-05-01","2018-06-01","2018-07-01","2018-08-01","2018-09-01","2018-10-01","2018-11-01","2018-12-01","2019-01-01","2019-02-01","2019-03-01","2019-04-01","2019-05-01","2019-06-01","2019-07-01","2019-08-01","2019-09-01","2019-10-01","2019-11-01","2019-12-01","2024-01-01","2024-02-01","2024-03-01","2024-04-01","2024-05-01","2024-06-01","2024-07-01","2024-08-01","2024-09-01","2024-10-01","2024-11-01","2024-12-01","2025-01-01","2025-02-01","2025-03-01","2025-04-01","2025-05-01","2025-06-01","2025-07-01","2025-08-01","2025-09-01","2025-10-01","2025-11-01","2025-12-01","2026-01-01","2026-02-01","2026-03-01","2026-04-01","2026-05-01","2026-06-01","2026-07-01","2026-08-01","2026-09-01"],"y":[208.0,208.0,121.0,199.0,193.0,190.0,175.0,211.0,66.0,113.0,205.0,146.0,147.0,349.0,218.0,123.0,317.0,185.0,106.0,225.0,75.0,164.0,96.0,154.0,254.0,-10.0,184.0,246.0,84.0,178.0,131.0,179.0,168.0,78.0,168.0,110.0,126.0,135.0,143.0,63.0,45.0,78.0,-8.0,-27.0,142.0,-4.0,116.0,212.0,-76.0,40.0,67.0,99.0,20.0,-45.0,65.0,-20.0,68.0,13.0,72.0,-7.0,180.0,-148.0,202.0,150.0,61.0,26.0,28.0,89.0,46.0],"type":"bar"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","margin":{"b":0,"l":0,"r":0,"t":30},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"title":{"text":"Monthly Change in Private Sector Payroll Employment"},"xaxis":{"title":{"text":"Month"}},"yaxis":{"title":{"text":"Jobs added (thousands)"}},"bargap":0.1,"shapes":[{"line":{"color":"black","width":1},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":0,"y1":0,"yref":"y"}]},                        {"responsive": true}                    ).then(function(){
-                            
+
 var gd = document.getElementById('490963e2-1258-4c06-9bea-c62887e7ed3a');
 var x = new MutationObserver(function (mutations, observer) {{
         var display = window.getComputedStyle(gd).display;
@@ -10758,7 +10758,7 @@ tr { background-color: transparent; }
     anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
+        if (clz.startsWith('code-annotation-')) {
           return true;
         }
       }
@@ -10778,11 +10778,11 @@ tr { background-color: transparent; }
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
         button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
+        tooltip = new bootstrap.Tooltip(button,
+          { trigger: "manual",
             customClass: "code-copy-button-tooltip",
             offset: [0, -8]});
-        tooltip.show();    
+        tooltip.show();
       }
       setTimeout(function() {
         if (tooltip) {
@@ -10859,7 +10859,7 @@ tr { background-color: transparent; }
       if (onUntriggerFn) {
         config.onUntrigger = onUntriggerFn;
       }
-      window.tippy(el, config); 
+      window.tippy(el, config);
     }
     const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
     for (var i=0; i<noterefs.length; i++) {
@@ -10934,7 +10934,7 @@ tr { background-color: transparent; }
       tippyHover(xref, undefined, function(instance) {
         instance.disable();
         let url = xref.getAttribute('href');
-        let hash = undefined; 
+        let hash = undefined;
         if (url.startsWith('#')) {
           hash = url;
         } else {
@@ -10962,7 +10962,7 @@ tr { background-color: transparent; }
               if (note !== null) {
                 const html = processXRef(id, note);
                 instance.setContent(html);
-              } 
+              }
             }).finally(() => {
               instance.enable();
               instance.show();
@@ -10986,7 +10986,7 @@ tr { background-color: transparent; }
               }
               const html = processXRef(null, note);
               instance.setContent(html);
-            } 
+            }
           }).finally(() => {
             instance.enable();
             instance.show();
@@ -11026,7 +11026,7 @@ tr { background-color: transparent; }
               height = bottom - top;
             }
             if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
+              // cook up a div (if necessary) and position it
               let div = window.document.getElementById("code-annotation-line-highlight");
               if (div === null) {
                 div = window.document.createElement("div");
